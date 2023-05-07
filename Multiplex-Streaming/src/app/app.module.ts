@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './Components/layout/layout.module';
 import { PagesModule } from './Components/pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxParticlesModule } from 'ngx-particlesjs';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LayoutModule,
     PagesModule,
     BrowserAnimationsModule,
-    PagesModule
+    PagesModule,
+    NgxParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
