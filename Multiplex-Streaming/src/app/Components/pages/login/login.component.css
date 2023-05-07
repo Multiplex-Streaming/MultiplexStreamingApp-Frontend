@@ -44,4 +44,15 @@ label.sr-only {
     min-width: 120%;
     text-align: left;
 }
-  
+
+.button-1{
+    background-color: #00668c;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #00668c;
+    padding: 10px;
+    width: 100%;
+    margin: 15px;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+}
