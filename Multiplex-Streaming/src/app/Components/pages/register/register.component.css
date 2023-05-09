@@ -5,14 +5,14 @@
 }
 
 .card-header {
-    background-color:#00668c;
+    background-color:#7c3db7;
     border-radius: 8px 8px 0 0;
-    border: 1px solid #00668c;
+    border: 15px solid #7c3db7;
     color: WHITE;
 }
 
 .cardi{
-    border: 2px solid #00668c;
+    border: 2px solid #7c3db7;
     border-radius: 15px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     background-color: rgb(247, 247, 247);
@@ -46,10 +46,10 @@ label.sr-only {
 }
 
 .button-1{
-    background-color: #00668c;
+    background-color: #7c3db7;
     color: white;
     border-radius: 5px;
-    border: 1px solid #00668c;
+    border: 1px solid #7c3db7;
     padding: 10px;
     width: 100%;
     margin: 15px;
@@ -59,4 +59,11 @@ label.sr-only {
 
 .col.text-center {
     flex: auto;
+}
+
+img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 15px;
 }
