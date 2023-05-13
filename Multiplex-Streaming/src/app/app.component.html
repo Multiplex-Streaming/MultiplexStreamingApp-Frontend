@@ -1,6 +1,16 @@
 <!-- app.component.html -->
 <div class="particles-container">
     <ngx-particle [total]="total" [default_height]="default_height" [default_width]="default_width" [args]="args"></ngx-particle>
+</div>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+      <div class="cont col-md-12">
+          <router-outlet></router-outlet>
+      </div>
   </div>
-  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+
+
   

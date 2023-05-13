@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <nav class="navbar justify-content-end">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="" alt="Multiplex streaming" height="40">
+          </a>
+        </div>
+      </nav>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-light"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/peliculas">Peliculas</a>
+            </li>
+            
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/series">Series</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/documentales">Documentales</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/infantiles">Infantiles</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/anime">Anime</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/favoritos">Favoritos</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/historial">Historial</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="logout()">Cerrar Sesión</a>
+            </li>
+
+            <!-- <li class="item" *ngIf="!estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/register">Registrarse</a>
+            </li>
+
+            <li class="item" *ngIf="!estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/forgot-password">Recuperar Contraseña</a>
+            </li> -->
+        </ul>
+        </div>
+    </div>
+</nav>

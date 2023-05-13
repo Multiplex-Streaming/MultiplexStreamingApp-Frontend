@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { LoginRequest } from 'src/app/models/loginRequest';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,21 +13,39 @@ export class LoginComponent {
 
   form: FormGroup; 
   user: LoginRequest = new LoginRequest();
+  error:string = '';
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
     this.form= this.formBuilder.group(
       {
         mail:['', [Validators.required, Validators.email]]   ,
         password:['',[Validators.required, Validators.minLength(1)]]
-        
       }
     )
   }
 
   onSubmit(event: Event, user: LoginRequest) {
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(user));
+    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(user));
+
+    if (this.form.valid) {
+      this.authService.login(this.user).subscribe({
+        next: data => {
+          console.log("DATA" + JSON.stringify(data));
+  
+          if (this.authService.estaAutenticado) {
+            this.router.navigate(['/home']);
+          }
+        },
+        error: error => {
+          this.error = error;
+        }
+      });
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
+  
 }
 
 
