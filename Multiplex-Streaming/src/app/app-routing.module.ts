@@ -10,11 +10,11 @@ import { inject } from '@angular/core';
 import { HistorialComponent } from './Components/pages/historial/historial.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent },
+  {path: 'home', component: HomeComponent, canActivate:[() => inject(AuthGuard).canActivate()] },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'historial', component: HistorialComponent},
+  {path: 'historial', component: HistorialComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 
  ];
