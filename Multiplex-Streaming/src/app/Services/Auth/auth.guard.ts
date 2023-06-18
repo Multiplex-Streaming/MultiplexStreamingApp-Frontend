@@ -13,11 +13,8 @@ export class AuthGuard{
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    console.log('GUARDS WORKING');
-
     return this.authService.estaAutenticado.pipe(
       map(e => {
-        console.log(e);
         if (e) {
           return true;
         } else {

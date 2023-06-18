@@ -26,13 +26,9 @@ export class LoginComponent {
   }
 
   onSubmit(event: Event, user: LoginRequest) {
-    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(user));
-
     if (this.form.valid) {
       this.authService.login(this.user).subscribe({
-        next: data => {
-          console.log("DATA" + JSON.stringify(data));
-  
+        next: data => {  
           if (this.authService.estaAutenticado) {
             this.router.navigate(['/home']);
           }

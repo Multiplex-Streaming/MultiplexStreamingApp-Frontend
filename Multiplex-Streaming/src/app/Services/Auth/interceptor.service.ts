@@ -11,9 +11,7 @@ export class JwtInterceptor implements HttpInterceptor{
   constructor( private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authService.currentUserValue.Token;
-    console.log("INTERCEPTOR WORKING");
-    
+    const token = this.authService.currentUserValue.Token;    
     if(token) {
       req = req.clone({
         setHeaders:{
@@ -21,7 +19,6 @@ export class JwtInterceptor implements HttpInterceptor{
         }
       });
     }
-    console.log('headers:', req.headers);
     return next.handle(req);
   }
 }

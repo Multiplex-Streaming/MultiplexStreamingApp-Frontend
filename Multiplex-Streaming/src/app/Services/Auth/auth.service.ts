@@ -16,8 +16,7 @@ export class AuthService {
   loggedIn= new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http: HttpClient) { 
-    console.log('Auth services');
+  constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<LoginRequest>(JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -26,16 +25,15 @@ export class AuthService {
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     const body = `userName=${user.Email}&password=${user.Password}&grant_type=password&client_id=multiplex`;
 
-    console.log(body);
-
     return this.http.post<any>(this.url, body, { headers }).pipe(map(data => {
-      console.log("data: ", data);
       if (data.access_token) {
-        localStorage.setItem(TOKEN_KEY, data.access_token);
+        const loginModel = new LoginRequest();
+        loginModel.Token = data.access_token;
+        localStorage.setItem(TOKEN_KEY, JSON.stringify(loginModel));
+        this.currentUserSubject.next(loginModel);
+        this.currentUser = this.currentUserSubject.asObservable();
+        this.loggedIn.next(true);
       }
-
-      this.currentUserSubject.next(data);
-      this.loggedIn.next(true);
       return data;
     }));
   }
@@ -46,12 +44,16 @@ export class AuthService {
   }
 
   public get estaAutenticado(): Observable<boolean> {
+    let hasToken = false;
+    this.currentUser.subscribe((value) => hasToken = !(value.Token === "" || value.Token === undefined))
+    this.loggedIn.next(hasToken);
     return this.loggedIn.asObservable();
   }
 
   logout(): void {
     window.sessionStorage.clear();
     localStorage.removeItem(TOKEN_KEY);
+    this.currentUser = new BehaviorSubject<LoginRequest>(JSON.parse('{}')).asObservable();
     this.loggedIn.next(false);
   }
 }

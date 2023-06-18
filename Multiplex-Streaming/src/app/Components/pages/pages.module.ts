@@ -10,7 +10,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthGuard } from 'src/app/Services/Auth/auth.guard';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { HistorialComponent } from './historial/historial.component';
-
+import { PeliculasComponent } from './peliculas/peliculas.component';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { HistorialComponent } from './historial/historial.component';
     HomeComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    HistorialComponent
+    HistorialComponent,
+    PeliculasComponent
   ],
   imports: [
     CommonModule,

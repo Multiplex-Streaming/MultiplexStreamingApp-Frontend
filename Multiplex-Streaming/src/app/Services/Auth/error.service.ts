@@ -13,7 +13,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
-      console.log("INTERCEPTOR ERROR WORKING" + err);
       if (err.status === 401) {
         alert("ERROR: Usted no tiene autorización");
       }
