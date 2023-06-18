@@ -15,7 +15,6 @@ export class AuthService {
   currentUser: Observable<LoginRequest>;
   loggedIn= new BehaviorSubject<boolean>(false);
 
-
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<LoginRequest>(JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -28,11 +27,12 @@ export class AuthService {
     return this.http.post<any>(this.url, body, { headers }).pipe(map(data => {
       if (data.access_token) {
         const loginModel = new LoginRequest();
+        loginModel.Email = user.Email;
         loginModel.Token = data.access_token;
         localStorage.setItem(TOKEN_KEY, JSON.stringify(loginModel));
         this.currentUserSubject.next(loginModel);
         this.currentUser = this.currentUserSubject.asObservable();
-        this.loggedIn.next(true);
+        this.loggedIn.next(true);  
       }
       return data;
     }));
@@ -41,6 +41,10 @@ export class AuthService {
 
   public get currentUserValue(): LoginRequest {
     return this.currentUserSubject.value;
+  }
+
+  public get esAdmin(): boolean {
+    return this.currentUserSubject.value.Email === 'cesarg.catania@gmail.com';
   }
 
   public get estaAutenticado(): Observable<boolean> {

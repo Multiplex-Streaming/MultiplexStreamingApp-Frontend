@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 export class NavbarComponent  implements OnInit{
 
   estaAutenticado:boolean=false;
+  esAdmin: boolean = false;
 
   constructor(  private authService: AuthService,private router: Router  ) {  }
 
   ngOnInit(): void {
     
     this.authService.estaAutenticado.subscribe(res=>( this.estaAutenticado=res));
+    this.esAdmin = this.authService.esAdmin;
   }
 
   logout(){

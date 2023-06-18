@@ -1,4 +1,4 @@
 export class GeneroModel {
-    Id:Number = 0;
-    Descripcion:String = "";
+    id:Number = 0;
+    descripcion:String = "";
 }

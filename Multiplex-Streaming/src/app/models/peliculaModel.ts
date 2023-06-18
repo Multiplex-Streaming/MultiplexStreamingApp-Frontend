@@ -1,6 +1,7 @@
 import { GeneroModel } from "./generoModel";
 
 export class PeliculaModel {
+    id: Number = 0;
     titulo:string = "";
     descripcion:string = "";
     duracion: string = "";

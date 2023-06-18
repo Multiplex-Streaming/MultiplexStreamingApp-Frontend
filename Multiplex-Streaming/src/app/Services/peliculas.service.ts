@@ -25,4 +25,28 @@ export class PeliculaService {
 
     return this.http.get<PeliculaModel[]>(`${this.urlBase}/all`, { headers });
   }
+
+  getGeneros (): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+    return this.http.get<GeneroModel[]>('http://localhost:61061/api/taxonomy/generos', { headers });
+  }
+
+  post (pelicula: PeliculaModel): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+    return this.http.post<PeliculaModel>(this.urlBase,pelicula,{ headers });
+  }
+
+  put (pelicula: PeliculaModel): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+    return this.http.put(this.urlBase, pelicula, { headers });
+  }
+
+  delete (id: Number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+    return this.http.delete(`${this.urlBase}/${id}`, { headers });
+  }
 }
