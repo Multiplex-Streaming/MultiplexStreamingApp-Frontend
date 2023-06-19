@@ -9,6 +9,7 @@ import { AuthService } from './Services/Auth/auth.service';
 import { inject } from '@angular/core';
 import { HistorialComponent } from './Components/pages/historial/historial.component';
 import { PeliculasComponent } from './Components/pages/peliculas/peliculas.component';
+import { RestorePasswordComponent } from './Components/pages/restore-password/restore-password.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[() => inject(AuthGuard).canActivate()] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'historial', component: HistorialComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'peliculas', component: PeliculasComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
+  {path: 'restore-password', component: RestorePasswordComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 
  ];
