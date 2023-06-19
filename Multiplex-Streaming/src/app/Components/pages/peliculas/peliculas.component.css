@@ -37,3 +37,11 @@
     .movie-details p {
     margin-bottom: 5px;
     }
+
+.btn.btn-primary {
+    border-color: #7c3db7;
+}
+.btn.btn-primary, .modal-header  {
+    background-color: #7c3db7 !important;
+    color: #fff;
+}

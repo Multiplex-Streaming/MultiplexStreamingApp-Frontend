@@ -32,7 +32,10 @@ export class RegisterComponent {
       this.registerService.create(newUser).subscribe({
         next: data => {  
           if (data) {
-            this.router.navigate(['/registro-pendiente']);
+            alert('El usuario ha sido registrado con éxito')
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 1000);
           }
         },
         error: error => {

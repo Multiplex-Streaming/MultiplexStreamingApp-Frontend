@@ -57,7 +57,8 @@ export class AuthService {
   logout(): void {
     window.sessionStorage.clear();
     localStorage.removeItem(TOKEN_KEY);
-    this.currentUser = new BehaviorSubject<LoginRequest>(JSON.parse('{}')).asObservable();
+    this.currentUserSubject = new BehaviorSubject<LoginRequest>(JSON.parse('{}'));
+    this.currentUser = this.currentUserSubject.asObservable();
     this.loggedIn.next(false);
   }
 }

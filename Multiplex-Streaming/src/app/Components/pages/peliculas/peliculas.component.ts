@@ -74,6 +74,7 @@ export class PeliculasComponent implements OnInit {
   guardarPelicula() {
     if (this.pelicula.titulo && this.pelicula.descripcion && this.pelicula.elenco && this.pelicula.url && this.pelicula.duracion && this.generoSelected) {
       this.pelicula.generos = [this.generoSelected];
+      this.pelicula.url = this.pelicula.url.replace('C:\\fakepath\\', 'assets/img/');
       if (this.editing) {
         this.peliculaService.put(this.pelicula).subscribe({
           next: data => {

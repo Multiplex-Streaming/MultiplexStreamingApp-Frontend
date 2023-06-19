@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { AuthService } from './Services/Auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,15 +17,19 @@ export class AppComponent implements OnInit {
   }
   default_height = window.innerHeight;
   default_width = window.innerWidth;
-  
 
-  constructor() {   }
+  constructor(private authService: AuthService) {   }
 
   ngOnInit(): void {
     window.addEventListener('resize', () => {
       this.default_height = window.innerHeight;
       this.default_width = window.innerWidth;
     });
+    
+  }
+
+  public get esAdmin () {
+    return this.authService.esAdmin;
   }
 }
 

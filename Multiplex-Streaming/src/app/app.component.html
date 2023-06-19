@@ -1,5 +1,5 @@
 <!-- app.component.html -->
-<div class="particles-container">
+<div class="particles-container" *ngIf="!esAdmin">
     <ngx-particle [total]="total" [default_height]="default_height" [default_width]="default_width" [args]="args"></ngx-particle>
 </div>
 <app-navbar></app-navbar>
