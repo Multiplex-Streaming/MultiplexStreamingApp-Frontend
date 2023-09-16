@@ -1,0 +1,51 @@
+<div class="row" *ngIf="!esAdmin">
+    <div class="col-md-4" *ngFor="let serie of series">
+        <div class="serie-card">
+            <img [title]="serie.nombre" height="100%" width="100%" 
+            [src]="serie.url" [alt]="serie.nombre">
+            <div class="serie-details">
+                <h3 class="text-center">{{ serie.nombre }}</h3>
+                <p class="description">{{ serie.descripcion }}</p>
+                <p class="description">Nº de capitulos: {{ serie.cantidadCapitulos }}.</p>
+                <p *ngFor="let c of serie.capitulos"><strong>:</strong> {{ c.nombreCp }}: {{ c.descripcionCp }}</p>
+                <!--<p><strong>Elenco:</strong> {{ serie.elenco }}</p>-->
+                <!--<p *ngFor="let g of pelicula.generos"><strong>Género:</strong> {{ g.descripcion.toUpperCase() }}</p>-->
+                
+            </div>
+          </div>
+    </div>
+
+</div>
+<div *ngIf="esAdmin">
+    <div class="container">
+        <div class="row mt-4 mb-2">
+            <div class="col-12">
+              
+            </div>
+          </div>
+    </div>
+<!-- Tabla de películas -->
+<table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let serie of series">
+        <td>{{ serie.nombre }}</td>
+        <td>{{ serie.descripcion }}</td>
+        
+       
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+  
+  
+      

@@ -13,7 +13,7 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class PeliculaService {
-  urlBase = 'http://localhost:61061/api/peliculas';
+  urlBase = 'http://localhost:5000/api/peliculas';
   currentUser: LoginRequest;
 
   constructor(private http: HttpClient) {
@@ -29,7 +29,7 @@ export class PeliculaService {
   getGeneros (): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
 
-    return this.http.get<GeneroModel[]>('http://localhost:61061/api/taxonomy/generos', { headers });
+    return this.http.get<GeneroModel[]>('http://localhost:5000/api/taxonomy/generos', { headers });
   }
 
   post (pelicula: PeliculaModel): Observable<any> {

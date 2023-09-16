@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { HistorialComponent } from './historial/historial.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
+import { SeriesComponent } from './series/series.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RestorePasswordComponent } from './restore-password/restore-password.co
     ForgotPasswordComponent,
     HistorialComponent,
     PeliculasComponent,
+    SeriesComponent,
     RestorePasswordComponent
   ],
   imports: [

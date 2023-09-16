@@ -10,7 +10,7 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class AuthService {
-  url = 'http://localhost:61061/connect/token';
+  url = 'http://localhost:5000/connect/token';
   currentUserSubject: BehaviorSubject<LoginRequest>;
   currentUser: Observable<LoginRequest>;
   loggedIn= new BehaviorSubject<boolean>(false);
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   public get esAdmin(): boolean {
-    return this.currentUserSubject.value.Email === 'cesarg.catania@gmail.com';
+    return this.currentUserSubject.value.Email === 'martin@gmail.com';
   }
 
   public get estaAutenticado(): Observable<boolean> {

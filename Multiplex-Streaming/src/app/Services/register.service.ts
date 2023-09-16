@@ -11,7 +11,7 @@ const TOKEN_KEY = 'auth-token';
   providedIn: 'root'
 })
 export class RegisterService {
-  url = 'http://localhost:61061/api/usuarios';
+  url = 'http://localhost:5000/api/usuarios';
 
   constructor(private http: HttpClient) {
   }
