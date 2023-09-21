@@ -8,4 +8,7 @@ export class PeliculaModel {
     elenco: string = ""; // si es importante para setearlo en localstorage
     url:string = "";
     generos?:[GeneroModel];
+    portada: string = "";
+    file: File | null = null;
+    portadaFile: File | null = null;
 }

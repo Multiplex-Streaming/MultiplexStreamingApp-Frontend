@@ -2,7 +2,7 @@
     <div class="col-md-4" *ngFor="let pelicula of peliculas">
         <div class="movie-card">
             <img [title]="pelicula.titulo" height="100%" width="100%" 
-            [src]="pelicula.url" [alt]="pelicula.titulo">
+            [src]="getPortada(pelicula)" [alt]="pelicula.titulo">
             <div class="movie-details">
                 <h3 class="text-center">{{ pelicula.titulo }}</h3>
                 <p class="description">{{ pelicula.descripcion }}</p>
@@ -82,8 +82,12 @@
                 <input type="text" class="form-control" [(ngModel)]="pelicula.elenco" name="elenco" required>
               </div>
               <div class="form-group">
+                <label>Archivo</label>
+                <input type="file" class="form-control" [(ngModel)]="pelicula.file" (change)="onFileSelected($event)" name="file" required>
+              </div>
+              <div class="form-group">
                 <label>Portada</label>
-                <input type="file" class="form-control" [(ngModel)]="pelicula.url" name="url" required>
+                <input type="file" class="form-control" [(ngModel)]="pelicula.portadaFile" (change)="onFileSelected($event)" name="file" required>
               </div>
               <div class="form-group col-6">
                 <label>Duración (minutos)</label>

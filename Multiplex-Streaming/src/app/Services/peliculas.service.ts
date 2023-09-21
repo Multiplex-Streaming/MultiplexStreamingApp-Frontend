@@ -20,6 +20,25 @@ export class PeliculaService {
     this.currentUser = JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}')
   }
 
+  getFormData (pelicula: PeliculaModel): FormData {
+    //form data
+    const formData = new FormData();
+    const file = pelicula.file;
+    const portadaFile = pelicula.portadaFile;
+    formData.append('Id', pelicula.id.toString());
+    formData.append('Titulo', pelicula.titulo.toString());
+    formData.append('Descripcion', pelicula.descripcion.toString());
+    formData.append('Duracion', pelicula.duracion.toString());
+    formData.append('Elenco',  pelicula.elenco.toString());
+    formData.append('Url',  pelicula.url.toString());
+    pelicula.generos?.forEach((item)=> {
+      formData.append('GenerosList', item.id.toString());
+    })
+    if (portadaFile != null)
+      formData.append('PortadaFile', portadaFile, portadaFile.name);
+
+      return formData;
+  }
   get (): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
 
@@ -34,19 +53,25 @@ export class PeliculaService {
 
   post (pelicula: PeliculaModel): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
-
-    return this.http.post<PeliculaModel>(this.urlBase,pelicula,{ headers });
+    const formData = this.getFormData(pelicula);
+    return this.http.post(this.urlBase, formData, { headers });
   }
 
   put (pelicula: PeliculaModel): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
-
-    return this.http.put(this.urlBase, pelicula, { headers });
+    const formData = this.getFormData(pelicula);
+    return this.http.put(this.urlBase, formData, { headers });
   }
 
   delete (id: Number): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
 
     return this.http.delete(`${this.urlBase}/${id}`, { headers });
+  }
+
+  getPortada (id: Number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+    return this.http.get(`${this.urlBase}/portada/${id}`, { headers });
   }
 }

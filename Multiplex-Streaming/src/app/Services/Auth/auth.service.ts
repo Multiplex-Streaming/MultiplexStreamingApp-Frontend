@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   public get esAdmin(): boolean {
-    return this.currentUserSubject.value.Email === 'martin@gmail.com';
+    return this.currentUserSubject.value.Email === 'cesarg@gmail.com';
   }
 
   public get estaAutenticado(): Observable<boolean> {
