@@ -1,0 +1,34 @@
+<div *ngIf="esAdmin">
+<div class="container">
+<div class="row mt-4 mb-2">
+<!--         <div class="col-12">
+            <button type="button" (click)="openModal()" class="btn btn-primary float-end">
+                <i class="fa fa-plus"></i>Agregar
+            </button>
+        </div> -->
+</div>
+</div>
+<!-- Tabla de abonados -->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Estado</th>
+      <th>Fecha registro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let abonado of abonados">
+      <td>{{ abonado.name }}</td>
+      <td>{{ abonado.email }}</td>
+      <td>{{ abonado.estado }}</td>
+      <td>{{ abonado.fecAlta }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary" (click)="actualizarEstadoAbonado(abonado.id, 'HABILITADO')"><i class="fa fa-check"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

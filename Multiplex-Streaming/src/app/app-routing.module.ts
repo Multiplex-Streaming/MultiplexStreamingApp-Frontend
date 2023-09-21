@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/pages/home/home.component';
+import { AbonadosComponent } from './Components/pages/abonados/abonados.component';
 import { LoginComponent } from './Components/pages/login/login.component';
 import { RegisterComponent } from './Components/pages/register/register.component';
 import { ForgotPasswordComponent } from './Components/pages/forgot-password/forgot-password.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'historial', component: HistorialComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'peliculas', component: PeliculasComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
+  {path: 'abonados', component: AbonadosComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'series', component: SeriesComponent, canActivate:[() => inject(AuthGuard).canActivate]},
   {path: 'restore-password', component: RestorePasswordComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
