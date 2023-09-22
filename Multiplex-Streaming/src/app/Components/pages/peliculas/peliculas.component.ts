@@ -77,7 +77,6 @@ export class PeliculasComponent implements OnInit {
   guardarPelicula() {
     if (this.pelicula.titulo && this.pelicula.descripcion && this.pelicula.elenco && this.pelicula.duracion && this.generoSelected) {
       this.pelicula.generos = [this.generoSelected];
-      this.pelicula.url = this.pelicula.url.replace('C:\\fakepath\\', 'assets/img/');
       if (this.editing) {
         this.peliculaService.put(this.pelicula).subscribe({
           next: data => {
@@ -106,7 +105,6 @@ export class PeliculasComponent implements OnInit {
     // Asignar los valores de la película seleccionada al formulario
     this.pelicula = { ...pelicula };
     this.generoSelected = pelicula.generos?.[0];
-    console.log(this.generoSelected);
     this.editing = true;
     // Abrir el modal
     this.openModal();
@@ -138,6 +136,10 @@ export class PeliculasComponent implements OnInit {
       duracion: '0',
       file: null
     };
+  }
+
+  onPortadaFileSelected(event: any){
+    this.pelicula.portadaFile=<File>event.target.files[0]
   }
 
   onFileSelected(event: any){

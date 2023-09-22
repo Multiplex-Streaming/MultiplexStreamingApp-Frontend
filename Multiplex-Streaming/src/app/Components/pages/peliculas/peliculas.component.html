@@ -83,11 +83,11 @@
               </div>
               <div class="form-group">
                 <label>Archivo</label>
-                <input type="file" class="form-control" [(ngModel)]="pelicula.file" (change)="onFileSelected($event)" name="file" required>
+                <input type="file" class="form-control" [(ngModel)]="pelicula.file" (change)="onFileSelected($event)" required>
               </div>
               <div class="form-group">
                 <label>Portada</label>
-                <input type="file" class="form-control" [(ngModel)]="pelicula.portadaFile" (change)="onFileSelected($event)" name="file" required>
+                <input type="file" class="form-control" [(ngModel)]="pelicula.portadaFile" (change)="onPortadaFileSelected($event)" required>
               </div>
               <div class="form-group col-6">
                 <label>Duración (minutos)</label>

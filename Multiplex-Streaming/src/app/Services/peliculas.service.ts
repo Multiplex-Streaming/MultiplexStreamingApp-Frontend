@@ -36,6 +36,8 @@ export class PeliculaService {
     })
     if (portadaFile != null)
       formData.append('PortadaFile', portadaFile, portadaFile.name);
+    if (file != null)
+      formData.append('File', file, file.name);
 
       return formData;
   }
