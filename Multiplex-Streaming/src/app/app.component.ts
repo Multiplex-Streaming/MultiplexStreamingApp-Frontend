@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
       this.default_height = window.innerHeight;
       this.default_width = window.innerWidth;
     });
-    
   }
 
   public get esAdmin () {

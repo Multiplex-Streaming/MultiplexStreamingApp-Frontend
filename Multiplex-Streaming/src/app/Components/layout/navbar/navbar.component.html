@@ -14,35 +14,23 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/abonados">Abonados</a>
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/peliculas">Peliculas</a>
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/peliculas')">Peliculas</a>
             </li>
             
             <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/series">Series</a>
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/series')">Series</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/documentales">Documentales</a>
+                <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/favoritos')">Favoritos</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/infantiles">Infantiles</a>
-            </li>
-
-            <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/anime">Anime</a>
-            </li>
-
-            <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/favoritos">Favoritos</a>
-            </li>
-
-            <li class="item" *ngIf="estaAutenticado">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="/historial">Historial</a>
+                <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/historial')">Historial</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
