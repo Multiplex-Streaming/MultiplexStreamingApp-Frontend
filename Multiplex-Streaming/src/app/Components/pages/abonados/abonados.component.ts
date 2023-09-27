@@ -13,6 +13,7 @@ declare var window: any;
 export class AbonadosComponent implements OnInit {
   abonados: AbonadoModel[] = [];
   esAdmin: boolean = false;
+  opcionSeleccionada: String = "PENDIENTE";
 
   constructor(private abonadosService: AbonadosService, private authService: AuthService) { 
     
@@ -24,7 +25,7 @@ export class AbonadosComponent implements OnInit {
   }
 
   getAbonados() {
-    this.abonadosService.get().subscribe({
+    this.abonadosService.get(this.opcionSeleccionada).subscribe({
       next: data => {
         this.abonados = data;
       },
@@ -44,5 +45,15 @@ export class AbonadosComponent implements OnInit {
       error: error => {
       }
     })
+  }
+
+  onEstadoAbonado(){
+    this.abonadosService.get(this.opcionSeleccionada).subscribe({
+      next: data => {
+        this.abonados = data;
+      },
+      error: error => {
+      }
+    });
   }
 }

@@ -1,11 +1,13 @@
 <div *ngIf="esAdmin">
 <div class="container">
 <div class="row mt-4 mb-2">
-<!--         <div class="col-12">
-            <button type="button" (click)="openModal()" class="btn btn-primary float-end">
-                <i class="fa fa-plus"></i>Agregar
-            </button>
-        </div> -->
+<div class="col-2">
+  <select id="estado" [(ngModel)]="opcionSeleccionada" class="form-select" (change)="onEstadoAbonado()" name="estado">
+    <option value="PENDIENTE" selected>PENDIENTES</option>
+    <option value="DE BAJA">DE BAJA</option>
+    <option value="HABILITADO">HABILITADOS</option>
+  </select>
+</div>
 </div>
 </div>
 <!-- Tabla de abonados -->
@@ -26,7 +28,10 @@
       <td>{{ abonado.estado }}</td>
       <td>{{ abonado.fecAlta }}</td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="actualizarEstadoAbonado(abonado.id, 'HABILITADO')"><i class="fa fa-check"></i></button>
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'DE BAJA' || abonado.estado === 'PENDIENTE'"
+        (click)="actualizarEstadoAbonado(abonado.id, 'HABILITADO')"><i class="fa fa-check"></i></button>
+        <button class="btn btn-sm btn-danger" *ngIf="abonado.estado === 'HABILITADO' || abonado.estado === 'PENDIENTE'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'DE BAJA')"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   </tbody>

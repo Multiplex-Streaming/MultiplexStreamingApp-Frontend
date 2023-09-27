@@ -17,10 +17,10 @@ export class AbonadosService {
     this.currentUser = JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}')
   }
 
-  get (): Observable<any> {
+  get (estado: String): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
 
-    return this.http.get<AbonadoModel[]>(`${this.urlBase}/pendientes`, { headers });
+    return this.http.get<AbonadoModel[]>(`${this.urlBase}/pendientes/${estado}`, { headers });
   }
 
   updateStatus (id: Number, status: String): Observable<any> {
