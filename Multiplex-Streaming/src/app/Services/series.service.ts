@@ -21,6 +21,38 @@ export class SerieService
         this.currentUser = JSON.parse(localStorage.getItem(TOKEN_KEY) || '{}')
     }
 
+    getSerieFormData (serie: SerieModel): FormData {
+        //form data
+        const formData = new FormData();
+        const portadaFile = serie.portadaFile;
+        formData.append('Id', serie.id.toString());
+        formData.append('Nombre', serie.nombre.toString());
+        formData.append('Descripcion', serie.descripcion.toString());
+        formData.append('CantidadCapitulos', serie.cantidadCapitulos.toString());
+        if (portadaFile != null)
+          formData.append('PortadaFile', portadaFile, portadaFile.name);
+    
+          return formData;
+      }
+
+      getCapituloFormData (capitulo: CapituloModel): FormData {
+        //form data
+        const formData = new FormData();
+        const portadaFile = capitulo.portadaFile;
+        const file = capitulo.file;
+        formData.append('IdSr', capitulo.idSr.toString());
+        formData.append('IdCp', capitulo.idCp.toString());
+        formData.append('NombreCp', capitulo.nombreCp.toString());
+        formData.append('DescripcionCp', capitulo.descripcionCp.toString());
+        formData.append('DuracionCp', capitulo.duracionCp.toString());
+        formData.append('Temporada', capitulo.temporada.toString());
+        if (portadaFile != null)
+          formData.append('PortadaFile', portadaFile, portadaFile.name);
+        if (file != null)
+          formData.append('File', file, file.name);
+    
+          return formData;
+      }
     //Get all series
     get (): Observable<any> 
     {
@@ -41,16 +73,16 @@ export class SerieService
     post (serie: SerieModel): Observable<any>
     {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
-
-        return this.http.post<SerieModel>(this.urlBase, serie, {headers});
+        const formData = this.getSerieFormData(serie);
+        return this.http.post(this.urlBase, formData, {headers});
     }
 
     //Editar Serie
     put (serie: SerieModel): Observable<any>
     {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
-        
-        return this.http.put<SerieModel>(this.urlBase, serie, { headers });
+        const formData = this.getSerieFormData(serie);
+        return this.http.put(this.urlBase, formData, { headers });
     }
 
     //Eliminar Serie
@@ -60,12 +92,26 @@ export class SerieService
         return this.http.delete(`${this.urlBase}/${id}`, { headers });
     }
 
-    //Agregar capitulo (se debe pasar al back id de la serie)
-    /*postCapitulo(capitulo: CapituloModel): Observable<any>
+    //Agregar capitulo
+    postCapitulo (capitulo: CapituloModel): Observable<any>
     {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        const formData = this.getCapituloFormData(capitulo);
+        return this.http.post(this.urlBase + '/capitulo', formData, {headers});
+    }
 
-        return this.http.post<CapituloModel>(this.urlBase, capitulo, {headers});
-    }*/
+    //Editar capitulo
+    putCapitulo (capitulo: CapituloModel): Observable<any>
+    {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        const formData = this.getCapituloFormData(capitulo);
+        return this.http.put(this.urlBase + '/capitulo', formData, { headers });
+    }
+
+    //Eliminar capitulo
+    deleteCapitulo (id: Number): Observable<any> {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        return this.http.delete(`${this.urlBase}/capitulo/${id}`, { headers });
+    }
 }
 

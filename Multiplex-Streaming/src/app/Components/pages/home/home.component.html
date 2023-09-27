@@ -1,3 +1,9 @@
-<h1 class="title" *ngIf="!esAdmin">Clásicos para volver a verlos</h1>
-<app-peliculas></app-peliculas>
-<app-series></app-series>
+<div *ngIf="!esAdmin">
+    <h1 class="title" >Clásicos para volver a verlos</h1>
+    <app-peliculas></app-peliculas>
+    <h1 class="title" *ngIf="!esAdmin">Series para hacer Maratón</h1>
+    <app-series></app-series>
+</div>
+<div *ngIf="esAdmin">
+    <h1>Bienvenido al sistema!</h1>
+</div>

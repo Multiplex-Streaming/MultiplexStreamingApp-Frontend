@@ -6,4 +6,7 @@ export class CapituloModel
     descripcionCp:string = "";
     duracionCp:string = "";
     urlCp:string = "";
+    file: File | null = null;
+    portadaFile: File | null = null;
+    temporada: Number = 0;
 }

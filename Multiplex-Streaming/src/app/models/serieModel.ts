@@ -7,5 +7,7 @@ export class SerieModel
     descripcion: string = "";
     cantidadCapitulos: Number = 0;
     url: string = "";
+    portada: string = "";
     capitulos?:[CapituloModel];
+    portadaFile: File | null = null;
 }
