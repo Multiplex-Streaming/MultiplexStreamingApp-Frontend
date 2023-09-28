@@ -155,7 +155,7 @@ export class SeriesComponent implements OnInit
     }
 
     eliminarCapitulo(capitulo: CapituloModel) {
-      this.serieService.delete(capitulo.idCp).subscribe({
+      this.serieService.deleteCapitulo(capitulo.idCp).subscribe({
         next: data => {
           if (data) {
             this.getSeries();
