@@ -3,6 +3,10 @@
     <app-peliculas></app-peliculas>
     <h1 class="title" *ngIf="!esAdmin">Series para hacer Maratón</h1>
     <app-series></app-series>
+    <h1 class="title" *ngIf="!esAdmin">Favoritos</h1>
+    <app-favoritos></app-favoritos>
+    <h1 class="title" *ngIf="!esAdmin">Estuviste viendo...</h1>
+    <app-historial></app-historial>
 </div>
 <div *ngIf="esAdmin">
     <h1>Bienvenido al sistema!</h1>

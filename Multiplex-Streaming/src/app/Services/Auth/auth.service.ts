@@ -38,13 +38,12 @@ export class AuthService {
     }));
   }
 
-
   public get currentUserValue(): LoginRequest {
     return this.currentUserSubject.value;
   }
 
   public get esAdmin(): boolean {
-    return this.currentUserSubject.value.Email === 'cesarg@gmail.com';
+    return this.currentUserSubject.value.Email === 'pepe@gmail.com';
   }
 
   public get estaAutenticado(): Observable<boolean> {

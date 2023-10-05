@@ -14,6 +14,7 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { AbonadosComponent } from './abonados/abonados.component';
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
 import { SeriesComponent } from './series/series.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SeriesComponent } from './series/series.component';
     PeliculasComponent,
     SeriesComponent,
     RestorePasswordComponent,
-    AbonadosComponent
+    AbonadosComponent,
+    FavoritosComponent
   ],
   imports: [
     CommonModule,

@@ -13,7 +13,7 @@
   
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="item" *ngIf="estaAutenticado">
+            <li class="item" *ngIf="estaAutenticado && esAdmin">
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
             </li>
 
