@@ -29,6 +29,7 @@ export class AuthService {
         const loginModel = new LoginRequest();
         loginModel.Email = user.Email;
         loginModel.Token = data.access_token;
+        loginModel.idCliente = data.idUsr;
         localStorage.setItem(TOKEN_KEY, JSON.stringify(loginModel));
         this.currentUserSubject.next(loginModel);
         this.currentUser = this.currentUserSubject.asObservable();
@@ -43,7 +44,7 @@ export class AuthService {
   }
 
   public get esAdmin(): boolean {
-    return this.currentUserSubject.value.Email === 'pepe@gmail.com';
+    return this.currentUserSubject.value.Email === 'martin@gmail.com';
   }
 
   public get estaAutenticado(): Observable<boolean> {
