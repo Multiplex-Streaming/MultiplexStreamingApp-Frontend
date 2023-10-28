@@ -12,6 +12,7 @@ import { HistorialComponent } from './Components/pages/historial/historial.compo
 import { PeliculasComponent } from './Components/pages/peliculas/peliculas.component';
 import { SeriesComponent } from './Components/pages/series/series.component';
 import { RestorePasswordComponent } from './Components/pages/restore-password/restore-password.component';
+import { VideoplayerComponent } from './Components/videoplayer/videoplayer.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[() => inject(AuthGuard).canActivate()] },
@@ -23,6 +24,8 @@ const routes: Routes = [
   {path: 'abonados', component: AbonadosComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'series', component: SeriesComponent, canActivate:[() => inject(AuthGuard).canActivate]},
   {path: 'restore-password', component: RestorePasswordComponent},
+  {path: 'ver/:id', component: VideoplayerComponent },
+  {path: 'ver-serie/:id', component: VideoplayerComponent },
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 
  ];

@@ -14,7 +14,7 @@ import { JwtInterceptor } from './Services/Auth/interceptor.service';
 import { ErrorInterceptor } from './Services/Auth/error.service';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { VideoplayerModule } from './Components/videoplayer/videoplayer.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     PagesModule,
     NgxParticlesModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    VideoplayerModule
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import {PeliculaModel} from 'src/app/models/peliculaModel';
+import { HistorialModel } from '../models/historialModel';
 
 const TOKEN_KEY = 'auth-token';
 
@@ -38,5 +39,17 @@ export class hsPlService {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
 
         return this.http.delete(`${this.urlBase}?peliculaId=${peliculaId}`, { headers });
+    }
+
+    put(peliculaId:Number, minutos: Number, segundos: Number){
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+        return this.http.put(`${this.urlBase}?peliculaId=${peliculaId}&minutos=${minutos}&segundos=${segundos}`, { headers });
+    }
+
+    getUltimoHistorialPelicula(peliculaId:Number){
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+        return this.http.get<HistorialModel>(`${this.urlBase}/ultimo-guardado/${peliculaId}`, { headers });
     }
 }

@@ -1,6 +1,6 @@
 <div class="row" *ngIf="!esAdmin">
     <div class="col-md-4" *ngFor="let pelicula of peliculas">
-        <div class="movie-card">
+        <div class="movie-card" (click)="verPelicula(pelicula.id)">
             <img [title]="pelicula.titulo" height="100%" width="100%" 
             [src]="getPortada(pelicula)" [alt]="pelicula.titulo">
             <div class="movie-details">

@@ -3,6 +3,7 @@ import { PeliculaService } from 'src/app/Services/peliculas.service';
 import { GeneroModel } from 'src/app/models/generoModel';
 import { PeliculaModel } from 'src/app/models/peliculaModel';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
+import { Router } from '@angular/router';
 
 declare var window: any;
 
@@ -30,7 +31,7 @@ export class PeliculasComponent implements OnInit {
   generoSelected?: GeneroModel = new GeneroModel();
   esAdmin: boolean = false;
 
-  constructor(private peliculaService: PeliculaService, private authService: AuthService) { 
+  constructor(private peliculaService: PeliculaService, private authService: AuthService, private router: Router) { 
     
   }
 
@@ -148,5 +149,9 @@ export class PeliculasComponent implements OnInit {
 
   getPortada (model: PeliculaModel) {
     return `http://localhost:5000/api/peliculas/portada/${model.id}`
+  }
+  
+  verPelicula (id: Number) {
+    this.router.navigate(['/ver', id]);
   }
 }

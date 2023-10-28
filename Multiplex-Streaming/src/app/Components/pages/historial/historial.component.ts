@@ -3,6 +3,7 @@ import { hsPlService } from 'src/app/Services/hsPeliculas.service';
 import { hsSrService } from 'src/app/Services/hsSeries.service';
 import {PeliculaModel} from 'src/app/models/peliculaModel';
 import { SerieModel } from 'src/app/models/serieModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historial',
@@ -11,7 +12,7 @@ import { SerieModel } from 'src/app/models/serieModel';
 })
 export class HistorialComponent implements OnInit {
 
-  constructor(private hsPlService: hsPlService, private hsSrService: hsSrService) {}
+  constructor(private hsPlService: hsPlService, private hsSrService: hsSrService, private router: Router) {}
 
   peliculas: PeliculaModel[] = [];
   pelicula: PeliculaModel = {
@@ -116,6 +117,13 @@ export class HistorialComponent implements OnInit {
     });
   }
 
+  verPelicula (id: Number) {
+    this.router.navigate(['/ver', id]);
+  }
+
+  verSerie (id: Number) {
+    this.router.navigate(['/ver-serie', id]);
+  }
 
   getPortada (model: PeliculaModel) {
     return `http://localhost:5000/api/peliculas/portada/${model.id}`

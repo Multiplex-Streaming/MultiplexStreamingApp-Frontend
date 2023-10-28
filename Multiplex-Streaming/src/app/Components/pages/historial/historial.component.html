@@ -1,6 +1,6 @@
 <div class="row" >
     <div class="col-md-4" *ngFor="let pelicula of peliculas">
-        <div class="movie-card">
+        <div class="movie-card" (click)="verPelicula(pelicula.id)">
             <img [title]="pelicula.titulo" height="100%" width="100%" 
             [src]="getPortada(pelicula)" [alt]="pelicula.titulo">
             <div class="movie-details">
@@ -18,7 +18,7 @@
 
 <div class="row" >
     <div class="col-md-4" *ngFor="let serie of series">
-        <div class="serie-card">
+        <div class="serie-card" (click)="verSerie(serie.id)">
             <img [title]="serie.nombre" height="100%" width="100%" 
              [alt]="serie.nombre">
             <div class="serie-details">

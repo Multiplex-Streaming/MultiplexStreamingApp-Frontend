@@ -76,4 +76,10 @@ export class PeliculaService {
 
     return this.http.get(`${this.urlBase}/portada/${id}`, { headers });
   }
+
+  getPelicula(id: Number): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+  
+    return this.http.get<PeliculaModel>(`${this.urlBase}/${id}`, { headers });
+  }
 }
