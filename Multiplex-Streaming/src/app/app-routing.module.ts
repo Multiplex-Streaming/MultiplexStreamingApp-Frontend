@@ -13,6 +13,9 @@ import { PeliculasComponent } from './Components/pages/peliculas/peliculas.compo
 import { SeriesComponent } from './Components/pages/series/series.component';
 import { RestorePasswordComponent } from './Components/pages/restore-password/restore-password.component';
 import { VideoplayerComponent } from './Components/videoplayer/videoplayer.component';
+import { VerSerieComponent } from './Components/pages/ver-serie/verserie.component';
+import { VerPeliculaComponent } from './Components/pages/peliculas/verpelicula.component';
+import { VerCapituloComponent } from './Components/pages/series/vercapitulo.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[() => inject(AuthGuard).canActivate()] },
@@ -24,8 +27,9 @@ const routes: Routes = [
   {path: 'abonados', component: AbonadosComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'series', component: SeriesComponent, canActivate:[() => inject(AuthGuard).canActivate]},
   {path: 'restore-password', component: RestorePasswordComponent},
-  {path: 'ver/:id', component: VideoplayerComponent },
-  {path: 'ver-serie/:id', component: VideoplayerComponent },
+  {path: 'ver-capitulo/:id/:capId', component: VerCapituloComponent },
+  {path: 'ver/:id', component: VerPeliculaComponent },
+  {path: 'ver-serie/:id', component: VerSerieComponent },
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 
  ];

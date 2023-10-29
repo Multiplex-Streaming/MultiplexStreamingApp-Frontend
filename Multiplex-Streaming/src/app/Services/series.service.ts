@@ -113,5 +113,20 @@ export class SerieService
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
         return this.http.delete(`${this.urlBase}/capitulo/${id}`, { headers });
     }
+
+    getSerie(id: Number): Observable<any> {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+        return this.http.get<SerieModel>(`${this.urlBase}/${id}`, {headers});
+    }
+
+    getCapituloFile(id: Number): Observable<Blob> {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        const options = {
+            responseType: 'blob' as 'json',
+            headers
+          };
+        return this.http.get<Blob>(`${this.urlBase}/descargar/${id}`, options);
+    }
 }
 

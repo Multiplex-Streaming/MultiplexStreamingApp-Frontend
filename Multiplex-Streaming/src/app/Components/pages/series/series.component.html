@@ -1,6 +1,6 @@
 <div class="row" *ngIf="!esAdmin">
     <div class="col-md-4" *ngFor="let serie of series">
-        <div class="serie-card">
+        <div class="serie-card" (click)="verSerie(serie.id)">
             <img [title]="serie.nombre" height="100%" width="100%" 
             [src]="getPortada(serie)" [alt]="serie.nombre">
             <div class="serie-details">

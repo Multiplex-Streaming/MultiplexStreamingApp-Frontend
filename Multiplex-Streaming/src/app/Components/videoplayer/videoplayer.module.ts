@@ -14,6 +14,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
         VgOverlayPlayModule,
         VgBufferingModule
     ],
-    declarations: [VideoplayerComponent]
+    declarations: [VideoplayerComponent],
+    exports: [VideoplayerComponent]
 })
 export class VideoplayerModule {}

@@ -3,6 +3,7 @@ import { CapituloModel } from 'src/app/models/capituloModel';
 import { SerieModel } from 'src/app/models/serieModel';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { SerieService } from 'src/app/Services/series.service';
+import { Router } from '@angular/router';
 
 declare var window: any;
 
@@ -43,7 +44,10 @@ export class SeriesComponent implements OnInit
     //generoSelected?: GeneroModel = new GeneroModel();
     esAdmin: boolean = false;
 
-    constructor (private serieService: SerieService, private authService: AuthService){}
+    constructor (private serieService: SerieService, private authService: AuthService,
+      private router: Router) {
+
+    }
 
     ngOnInit(): void 
     {
@@ -231,4 +235,7 @@ export class SeriesComponent implements OnInit
       return `http://localhost:5000/api/series/portada/${model.id}`
     }
 
+    verSerie(id: Number) {
+      this.router.navigate(['/ver-serie', id]);
+    }
 }

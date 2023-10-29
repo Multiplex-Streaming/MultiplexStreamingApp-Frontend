@@ -1,0 +1,20 @@
+<div class="serie">
+<div class="serie-details">
+    <img [src]="serie.portada" class="img-fluid">
+    <h2>{{ serie.titulo }}</h2>
+    <p>{{ serie.descripcion }}</p>
+    <p>Temporadas: {{ cantTemporadas }}</p>
+</div>
+<div class="episodios-list">
+    <h3>Lista de Capítulos</h3>
+    <ul>
+    <li *ngFor="let capitulo of serie.capitulos">
+        <img [src]="capitulo.portada" class="img-thumbnail">
+        <div class="episode-details">
+        <h4>{{ capitulo.titulo }}</h4>
+        <p>{{ capitulo.descripcion }}</p>
+        </div>
+    </li>
+    </ul>
+</div>
+</div>

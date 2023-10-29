@@ -82,4 +82,13 @@ export class PeliculaService {
   
     return this.http.get<PeliculaModel>(`${this.urlBase}/${id}`, { headers });
   }
+
+  getFile(id: Number): Observable<Blob> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    const options = {
+      responseType: 'blob' as 'json',
+      headers
+    };
+    return this.http.get<Blob>(`${this.urlBase}/descargar/${id}`, options);
+  }
 }

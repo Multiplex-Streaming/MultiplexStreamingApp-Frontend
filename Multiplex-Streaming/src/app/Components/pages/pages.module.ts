@@ -15,6 +15,10 @@ import { AbonadosComponent } from './abonados/abonados.component';
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
 import { SeriesComponent } from './series/series.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
+import { VerSerieComponent } from './ver-serie/verserie.component';
+import { VerPeliculaComponent } from './peliculas/verpelicula.component';
+import { VideoplayerModule } from 'src/app/Components/videoplayer/videoplayer.module';
+import { VerCapituloComponent } from './series/vercapitulo.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,18 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
     SeriesComponent,
     RestorePasswordComponent,
     AbonadosComponent,
-    FavoritosComponent
+    FavoritosComponent,
+    VerSerieComponent,
+    VerPeliculaComponent,
+    VerCapituloComponent
   ],
   imports: [
     CommonModule,
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule, 
+    AppRoutingModule,
+    VideoplayerModule
   ],
   exports: [
     LoginComponent,

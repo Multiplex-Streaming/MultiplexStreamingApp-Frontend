@@ -1,0 +1,28 @@
+.serie {
+display: flex;
+justify-content: space-between;
+margin: 20px;
+padding: 20px;
+border: 1px solid #ccc;
+}
+.serie-details {
+flex: 1;
+text-align: center;
+}
+.episodios-list {
+flex: 1;
+}
+.episodios-list h3 {
+text-align: center;
+}
+ul {
+list-style-type: none;
+padding: 0;
+}
+li {
+display: flex;
+margin-bottom: 20px;
+}
+img {
+max-width: 100%;
+}
