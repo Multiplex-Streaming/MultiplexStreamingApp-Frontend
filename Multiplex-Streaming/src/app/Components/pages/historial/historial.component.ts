@@ -125,8 +125,12 @@ export class HistorialComponent implements OnInit {
     this.router.navigate(['/ver-serie', id]);
   }
 
-  getPortada (model: PeliculaModel) {
+  getPeliculaPortada (model: PeliculaModel) {
     return `http://localhost:5000/api/peliculas/portada/${model.id}`
+  }
+
+  getSeriePortada (model: SerieModel) {
+    return `http://localhost:5000/api/series/portada/${model.id}`
   }
   resetForm() {
     this.pelicula = {

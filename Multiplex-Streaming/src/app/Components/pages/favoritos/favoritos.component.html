@@ -1,1 +1,32 @@
-<p>favoritos works!</p>
+<div class="row" >
+    <div class="col-md-4" *ngFor="let pelicula of peliculas">
+        <div class="movie-card" (click)="verPelicula(pelicula.id)">
+            <img [title]="pelicula.titulo" height="100%" width="100%" 
+            [src]="getPeliculaPortada(pelicula)" [alt]="pelicula.titulo">
+            <div class="movie-details">
+                <h3 class="text-center">{{ pelicula.titulo }}</h3>
+                <p class="description">{{ pelicula.descripcion }}</p>
+                <div>
+                <p><strong>Duración:</strong> {{ pelicula.duracion }} minutos.</p>
+                <p><strong>Elenco:</strong> {{ pelicula.elenco }}</p>
+                <!-- <p *ngFor="let g of pelicula.generos"><strong>Género:</strong> {{ g.descripcion.toUpperCase() }}</p> -->
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col-md-4" *ngFor="let serie of series">
+        <div class="serie-card" (click)="verSerie(serie.id)">
+            <img [title]="serie.nombre" height="100%" width="100%" 
+            [src]="getSeriePortada(serie)" [alt]="serie.nombre">
+            <div class="serie-details">
+                <h3 class="text-center">{{ serie.nombre }}</h3>
+                <p class="description">{{ serie.descripcion }}</p>
+                <p class="description">Nº de Temporadas: {{ serie.cantidadCapitulos }}.</p>                
+            </div>
+          </div>
+    </div>
+</div>
+

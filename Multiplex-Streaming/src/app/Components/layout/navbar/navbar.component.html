@@ -25,18 +25,18 @@
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/series')">Series</a>
             </li>
 
-            <li class="item" *ngIf="estaAutenticado">
+            <li class="item" *ngIf="estaAutenticado && !esAdmin">
                 <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/favoritos')">Favoritos</a>
             </li>
 
-            <li class="item" *ngIf="estaAutenticado">
+            <li class="item" *ngIf="estaAutenticado && !esAdmin">
                 <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/historial')">Historial</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
                 <a class="nav-link active itemNav" aria-current="page" (click)="logout()">Cerrar Sesión</a>
             </li>
-
+            <app-autocomplete *ngIf="estaAutenticado && !esAdmin"></app-autocomplete>
             <!-- <li class="item" *ngIf="!estaAutenticado">
                 <a class="nav-link active itemNav" aria-current="page" routerLink="/register">Registrarse</a>
             </li>
