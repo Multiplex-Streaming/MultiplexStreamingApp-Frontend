@@ -1,12 +1,13 @@
 <div *ngIf="!esAdmin">
-    <h1 class="title" >Clásicos para volver a verlos</h1>
+    <h1 class="title">Películas</h1>
     <app-peliculas></app-peliculas>
-    <h1 class="title" *ngIf="!esAdmin">Series para hacer Maratón</h1>
+    <h1 class="title" *ngIf="!esAdmin">Series</h1>
     <app-series></app-series>
     <h1 class="title" *ngIf="!esAdmin">Favoritos</h1>
     <app-favoritos></app-favoritos>
-    <h1 class="title" *ngIf="!esAdmin">Estuviste viendo...</h1>
+    <h1 class="title" *ngIf="!esAdmin">Seguir viendo</h1>
     <app-historial></app-historial>
+    <app-recomendados></app-recomendados>
 </div>
 <div *ngIf="esAdmin">
     <h1>Bienvenido al sistema!</h1>

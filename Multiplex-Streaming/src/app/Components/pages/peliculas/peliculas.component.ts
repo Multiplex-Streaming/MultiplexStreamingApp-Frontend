@@ -41,7 +41,8 @@ export class PeliculasComponent implements OnInit {
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('myModal')
     );
-    this.esAdmin = this.authService.esAdmin;
+    this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
+    // this.esAdmin = this.authService.esAdmin;
   }
 
   getPeliculas() {

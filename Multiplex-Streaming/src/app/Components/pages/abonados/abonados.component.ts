@@ -20,7 +20,8 @@ export class AbonadosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.esAdmin = this.authService.esAdmin;
+    this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
+    // this.esAdmin = this.authService.esAdmin;
     this.getAbonados();
   }
 

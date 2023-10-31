@@ -33,7 +33,7 @@ export class AuthService {
         localStorage.setItem(TOKEN_KEY, JSON.stringify(loginModel));
         this.currentUserSubject.next(loginModel);
         this.currentUser = this.currentUserSubject.asObservable();
-        this.loggedIn.next(true);  
+        this.loggedIn.next(true);
       }
       return data;
     }));
@@ -43,8 +43,10 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  public get esAdmin(): boolean {
-    return this.currentUserSubject.value.Email === 'martin@gmail.com';
+  public get esAdmin(): Observable<boolean> {
+    let _admin = new BehaviorSubject<boolean>(false);
+    this.currentUser.subscribe((value) => _admin.next(value.Email === "cesarg@gmail.com"));
+    return _admin.asObservable();
   }
 
   public get estaAutenticado(): Observable<boolean> {

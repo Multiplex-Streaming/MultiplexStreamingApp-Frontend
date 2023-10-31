@@ -13,7 +13,8 @@
   
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="item" *ngIf="estaAutenticado && esAdmin">
+            <app-autocomplete *ngIf="estaAutenticado && !admin()"></app-autocomplete>
+            <li class="item" *ngIf="estaAutenticado && admin()">
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
             </li>
 
@@ -25,18 +26,17 @@
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/series')">Series</a>
             </li>
 
-            <li class="item" *ngIf="estaAutenticado && !esAdmin">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/favoritos')">Favoritos</a>
+            <li class="item" *ngIf="estaAutenticado && !admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/favoritos')">Favoritos</a>
             </li>
 
-            <li class="item" *ngIf="estaAutenticado && !esAdmin">
-                <a class="nav-link active itemNav" aria-current="page" routerLink="navigateTo('/historial')">Historial</a>
+            <li class="item" *ngIf="estaAutenticado && !admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/historial')">Historial</a>
             </li>
 
             <li class="item" *ngIf="estaAutenticado">
                 <a class="nav-link active itemNav" aria-current="page" (click)="logout()">Cerrar Sesión</a>
             </li>
-            <app-autocomplete *ngIf="estaAutenticado && !esAdmin"></app-autocomplete>
             <!-- <li class="item" *ngIf="!estaAutenticado">
                 <a class="nav-link active itemNav" aria-current="page" routerLink="/register">Registrarse</a>
             </li>

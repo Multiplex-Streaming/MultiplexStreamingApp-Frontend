@@ -28,7 +28,9 @@ export class AppComponent implements OnInit {
   }
 
   public get esAdmin () {
-    return this.authService.esAdmin;
+    let admin = false;
+    this.authService.esAdmin.subscribe(res => admin = res);
+    return admin;
   }
 }
 

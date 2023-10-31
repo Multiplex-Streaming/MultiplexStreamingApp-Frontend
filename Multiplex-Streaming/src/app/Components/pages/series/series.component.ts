@@ -58,7 +58,8 @@ export class SeriesComponent implements OnInit
         this.capituloModal = new window.bootstrap.Modal(
           document.getElementById('capituloModal')
         );
-        this.esAdmin = this.authService.esAdmin;
+        this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
+        // this.esAdmin = this.authService.esAdmin;
     }
 
     //GET all series

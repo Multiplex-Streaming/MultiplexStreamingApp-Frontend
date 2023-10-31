@@ -19,6 +19,7 @@ import { VerSerieComponent } from './ver-serie/verserie.component';
 import { VerPeliculaComponent } from './peliculas/verpelicula.component';
 import { VideoplayerModule } from 'src/app/Components/videoplayer/videoplayer.module';
 import { VerCapituloComponent } from './series/vercapitulo.component';
+import { RecomendadosComponent } from './recomendados/recomendados.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { VerCapituloComponent } from './series/vercapitulo.component';
     FavoritosComponent,
     VerSerieComponent,
     VerPeliculaComponent,
-    VerCapituloComponent
+    VerCapituloComponent,
+    RecomendadosComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { VerCapituloComponent } from './series/vercapitulo.component';
     HomeComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    HistorialComponent
+    HistorialComponent,
+    RecomendadosComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [AuthGuard, AuthService]

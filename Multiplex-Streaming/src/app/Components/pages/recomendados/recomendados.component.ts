@@ -1,27 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { hsSrService } from 'src/app/Services/hsSeries.service';
-import {PeliculaModel} from 'src/app/models/peliculaModel';
+import { hsPlService } from 'src/app/Services/hsPeliculas.service';
+import { PeliculaModel } from 'src/app/models/peliculaModel';
 import { SerieModel } from 'src/app/models/serieModel';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recomendados',
-  templateUrl: './historial.component.html',
-  styleUrls: ['./historial.component.css']
+  templateUrl: './recomendados.component.html',
+  styleUrls: ['./recomendados.component.css']
 })
-export class HistorialComponent implements OnInit {
+export class RecomendadosComponent implements OnInit {
 
-  constructor(private hsSrService: hsSrService, private router: Router) {}
+  constructor(private hsSrService: hsSrService, private hsPlService: hsPlService, private router: Router) {}
 
   peliculas: PeliculaModel[] = [];
   series: SerieModel[] = [];
 
   ngOnInit(): void {    
-    
-  }
-
-  getRecomendados () {
-    
+    this.hsSrService.getRecomendaciones().subscribe({
+      next: data => {
+        this.series = data;
+      },
+      error: error => {
+      }
+    });
+    this.hsPlService.getRecomendaciones().subscribe({
+      next: data => {
+        this.peliculas = data;
+      },
+      error: error => {
+      }
+    });
   }
 
   verPelicula (id: Number) {
@@ -32,7 +42,10 @@ export class HistorialComponent implements OnInit {
     this.router.navigate(['/ver-serie', id]);
   }
 
-  getPortada (model: PeliculaModel) {
+  getPortadaPelicula (model: PeliculaModel) {
     return `http://localhost:5000/api/peliculas/portada/${model.id}`
+  }
+  getPortadaSerie (model: SerieModel) {
+    return `http://localhost:5000/api/series/portada/${model.id}`
   }
 }

@@ -52,4 +52,10 @@ export class hsPlService {
 
         return this.http.get<HistorialModel>(`${this.urlBase}/ultimo-guardado/${peliculaId}`, { headers });
     }
+
+    getRecomendaciones (): Observable<any> {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        
+        return this.http.get<PeliculaModel[]>(`${this.urlBase}/recomendaciones`, { headers });
+    }
 }

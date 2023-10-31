@@ -1,28 +1,47 @@
-.serie {
-display: flex;
-justify-content: space-between;
-margin: 20px;
-padding: 20px;
-border: 1px solid #ccc;
+.movie-card {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+    }
+    .movie-card img {
+    transition: transform 0.3s;
+    }
+    .movie-card:hover img {
+    transform: scale(1.1);
+    }
+    .movie-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .movie-card:hover .movie-details {
+    opacity: 1;
+    }
+    .movie-details h3 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+    }
+    .movie-details p.description {
+    font-size: 14px;
+    margin-bottom: 15px;
+    }
+    .movie-details p {
+    margin-bottom: 5px;
+    }
+
+.btn.btn-primary {
+    border-color: #7c3db7;
 }
-.serie-details {
-flex: 1;
-text-align: center;
-}
-.episodios-list {
-flex: 1;
-}
-.episodios-list h3 {
-text-align: center;
-}
-ul {
-list-style-type: none;
-padding: 0;
-}
-li {
-display: flex;
-margin-bottom: 20px;
-}
-img {
-max-width: 100%;
+.btn.btn-primary, .modal-header  {
+    background-color: #7c3db7 !important;
+    color: #fff;
 }

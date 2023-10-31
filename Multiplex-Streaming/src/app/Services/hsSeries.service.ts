@@ -39,4 +39,10 @@ export class hsSrService{
 
         return this.http.delete(`${this.urlBase}?serieId=${serieId}`, { headers });
     }
+
+    getRecomendaciones(): Observable<any> {
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+
+        return this.http.get<SerieModel[]>(`${this.urlBase}/recomendaciones`, { headers });
+    }
 }
