@@ -20,6 +20,8 @@ import { VerPeliculaComponent } from './peliculas/verpelicula.component';
 import { VideoplayerModule } from 'src/app/Components/videoplayer/videoplayer.module';
 import { VerCapituloComponent } from './series/vercapitulo.component';
 import { RecomendadosComponent } from './recomendados/recomendados.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MetricasComponent } from './metricas/metricas.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { RecomendadosComponent } from './recomendados/recomendados.component';
     VerSerieComponent,
     VerPeliculaComponent,
     VerCapituloComponent,
-    RecomendadosComponent
+    RecomendadosComponent,
+    MetricasComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import { RecomendadosComponent } from './recomendados/recomendados.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    VideoplayerModule
+    VideoplayerModule,
+    NgxChartsModule
   ],
   exports: [
     LoginComponent,

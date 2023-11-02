@@ -18,6 +18,10 @@
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
             </li>
 
+            <li class="item" *ngIf="estaAutenticado && admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/metricas')">Metricas y mediciones</a>
+            </li>
+
             <li class="item" *ngIf="estaAutenticado">
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/peliculas')">Peliculas</a>
             </li>
