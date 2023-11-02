@@ -17,6 +17,7 @@ import { VerSerieComponent } from './Components/pages/ver-serie/verserie.compone
 import { VerPeliculaComponent } from './Components/pages/peliculas/verpelicula.component';
 import { VerCapituloComponent } from './Components/pages/series/vercapitulo.component';
 import { FavoritosComponent } from './Components/pages/favoritos/favoritos.component';
+import { MetricasComponent } from './Components/pages/metricas/metricas.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[() => inject(AuthGuard).canActivate()] },
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'peliculas', component: PeliculasComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'abonados', component: AbonadosComponent , canActivate:[() => inject(AuthGuard).canActivate()]},
   {path: 'series', component: SeriesComponent, canActivate:[() => inject(AuthGuard).canActivate]},
+  {path: 'metricas', component: MetricasComponent, canActivate:[() => inject(AuthGuard).canActivate]},
   {path: 'restore-password', component: RestorePasswordComponent},
   {path: 'ver-capitulo/:id/:capId', component: VerCapituloComponent },
   {path: 'ver/:id', component: VerPeliculaComponent },

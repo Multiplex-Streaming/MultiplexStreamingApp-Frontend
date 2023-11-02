@@ -1,0 +1,83 @@
+<div class="chart-section">
+    <h2>Top 10 Películas más vistas por los usuarios</h2>
+    <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="topPeliculasData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Películas"
+    yAxisLabel="Calificación"
+    ></ngx-charts-bar-vertical>
+</div>
+
+<div class="chart-section">
+    <h2>Top 10 Series más vistas por los usuarios</h2>
+    <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="topSeriesData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Películas"
+    yAxisLabel="Calificación"
+    ></ngx-charts-bar-vertical>
+</div>
+
+<div class="chart-section">
+    <h2>Generos mas vistos en peliculas</h2>
+    <ngx-charts-advanced-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="generosPeliculasData"
+        [gradient]="gradient"
+    ></ngx-charts-advanced-pie-chart>
+</div>
+
+<div class="chart-section">
+    <h2>Generos mas vistos en series</h2>
+    <ngx-charts-advanced-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="generosSeriesData"
+        [gradient]="gradient"
+    ></ngx-charts-advanced-pie-chart>
+</div>
+
+<div class="chart-section">
+    <h2>Usuarios con más películas vistas</h2>
+    <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="usuariosPeliculasData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Usuarios"
+    yAxisLabel="Películas"
+    ></ngx-charts-bar-vertical>
+</div>
+
+<div class="chart-section">
+    <h2>Usuarios con más series vistas</h2>
+    <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="usuariosSeriesData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Usuarios"
+    yAxisLabel="Series"
+    ></ngx-charts-bar-vertical>
+</div>
