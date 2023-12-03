@@ -3,6 +3,7 @@
         <div class="movie-card" (click)="verPelicula(pelicula.id)">
             <img [title]="pelicula.titulo" height="100%" width="100%" 
             [src]="getPortada(pelicula)" [alt]="pelicula.titulo">
+            <!-- <i class="fas fa-heart favorite-icon"></i> -->
             <div class="movie-details">
                 <h3 class="text-center">{{ pelicula.titulo }}</h3>
                 <p class="description">{{ pelicula.descripcion }}</p>
@@ -11,6 +12,9 @@
                 <p><strong>Elenco:</strong> {{ pelicula.elenco }}</p>
                 <p *ngFor="let g of pelicula.generos"><strong>Género:</strong> {{ g.descripcion.toUpperCase() }}</p>
                 </div>
+                <br>
+                <app-fav [peliculaId]="pelicula.id"
+                [esBoton]="true"></app-fav>
             </div>
           </div>
     </div>

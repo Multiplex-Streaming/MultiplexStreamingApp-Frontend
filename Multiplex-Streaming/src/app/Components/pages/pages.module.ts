@@ -22,6 +22,7 @@ import { VerCapituloComponent } from './series/vercapitulo.component';
 import { RecomendadosComponent } from './recomendados/recomendados.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MetricasComponent } from './metricas/metricas.component';
+import { FavoritoComponent } from './favoritos/favorito.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MetricasComponent } from './metricas/metricas.component';
     VerPeliculaComponent,
     VerCapituloComponent,
     RecomendadosComponent,
-    MetricasComponent
+    MetricasComponent,
+    FavoritoComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { MetricasComponent } from './metricas/metricas.component';
     RegisterComponent,
     ForgotPasswordComponent,
     HistorialComponent,
-    RecomendadosComponent
+    RecomendadosComponent,
+    FavoritoComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [AuthGuard, AuthService]
