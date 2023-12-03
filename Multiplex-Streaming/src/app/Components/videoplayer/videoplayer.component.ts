@@ -28,8 +28,7 @@ export class VideoplayerComponent {
   }
 
   playerReady(api: VgApiService) {
-    console.log(this.source);
-    this._source = this.sanitizer.bypassSecurityTrustUrl(this.source.toString());
+    // this._source = this.sanitizer.bypassSecurityTrustUrl(this.source.toString());
     this.api = api;
     api.getDefaultMedia().subscriptions.play.subscribe(this.play.bind(this));
   }
