@@ -45,7 +45,7 @@ export class AuthService {
 
   public get esAdmin(): Observable<boolean> {
     let _admin = new BehaviorSubject<boolean>(false);
-    this.currentUser.subscribe((value) => _admin.next(value.Email === "cesarg@gmail.com"));
+    this.currentUser.subscribe((value) => _admin.next(value.Email === "pepe@gmail.com"));
     return _admin.asObservable();
   }
 

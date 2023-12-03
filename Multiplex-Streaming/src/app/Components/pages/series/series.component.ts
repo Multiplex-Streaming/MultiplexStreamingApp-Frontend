@@ -232,6 +232,10 @@ export class SeriesComponent implements OnInit
       this.capitulo.portadaFile = <File>event.target.files[0]
     }
 
+    onFileSelected(event: any) {
+      this.capitulo.file = <File>event.target.files[0]
+    }
+
     getPortada (model: SerieModel) {
       return `http://localhost:5000/api/series/portada/${model.id}`
     }

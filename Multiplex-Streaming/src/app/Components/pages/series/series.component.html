@@ -252,6 +252,10 @@ aria-hidden="true"
       <label>Portada</label>
       <input type="file" class="form-control" [(ngModel)]="serie.portadaFile" (change)="onPortadaCapituloSelected($event)" required>
     </div>
+    <div class="form-group">
+      <label>Archivo</label>
+      <input type="file" class="form-control" [(ngModel)]="serie.url" (change)="onFileSelected($event)" required>
+    </div>
     <button type="submit" class="btn btn-primary mt-4" (click)="guardarCapitulo()">Guardar</button>
   </form>
 </div>
