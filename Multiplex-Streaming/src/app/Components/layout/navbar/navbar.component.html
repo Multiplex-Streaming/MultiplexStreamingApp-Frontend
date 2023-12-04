@@ -14,6 +14,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <app-autocomplete *ngIf="estaAutenticado && !admin()"></app-autocomplete>
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/home')">Pagina Principal</a>
+            </li>
             <li class="item" *ngIf="estaAutenticado && admin()">
                 <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
             </li>

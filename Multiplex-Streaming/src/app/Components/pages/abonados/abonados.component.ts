@@ -29,6 +29,7 @@ export class AbonadosComponent implements OnInit {
     this.abonadosService.get(this.opcionSeleccionada).subscribe({
       next: data => {
         this.abonados = data;
+        console.log(this.abonados);
       },
       error: error => {
       }
@@ -52,9 +53,21 @@ export class AbonadosComponent implements OnInit {
     this.abonadosService.get(this.opcionSeleccionada).subscribe({
       next: data => {
         this.abonados = data;
+        console.log(this.abonados);
       },
       error: error => {
       }
     });
+  }
+
+  onAbonadosPagos(){
+    this.abonadosService.getAllUsuariosConPagos().subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: error => {
+      }
+    });
+
   }
 }

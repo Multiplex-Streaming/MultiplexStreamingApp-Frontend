@@ -19,7 +19,6 @@ export class AbonadosService {
 
   get (estado: String): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
-
     return this.http.get<AbonadoModel[]>(`${this.urlBase}/pendientes/${estado}`, { headers });
   }
 
@@ -30,5 +29,10 @@ export class AbonadosService {
         nuevoEstado: status
     }
     return this.http.put(this.urlBase + '/update-abonado-status', abonado, { headers });
+  }
+
+  getAllUsuariosConPagos(): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    return this.http.get(`${this.urlBase}/Abonados-y-pagos`, { headers });
   }
 }

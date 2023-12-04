@@ -6,7 +6,14 @@ import { LoginRequest } from 'src/app/models/loginRequest';
 @Injectable({
   providedIn: 'root'
 })
-export class PagosService {
 
-  constructor() { }
+export class PagosService {
+  urlBase = 'http://localhost:5000/api/pagos';
+  currentUser: LoginRequest;
+  abonadosPagos: Observable<any>;
+
+  constructor(private http: HttpClient) { 
+    this.currentUser = JSON.parse(localStorage.getItem('auth-token') || '{}')
+    this.abonadosPagos = new Observable<any>();
+  }
 }
