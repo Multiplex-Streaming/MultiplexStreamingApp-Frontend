@@ -4,9 +4,11 @@
     <table class="table">
       <thead>
         <tr>
+          <th>id</th>
           <th>Correo</th>
           <th>Nombre Completo</th>
           <th>Fecha de Pago</th>
+          <th>id de pago</th>
           <th>Monto</th>
           <th>Pagado</th>
         </tr>
@@ -14,11 +16,19 @@
       <tbody>
         <ng-container *ngFor="let usuario of Pagos">
             <tr *ngFor="let pago of usuario.pagos">
+              <td>{{ usuario.usuarioId }}</td>
               <td>{{ usuario.correo }}</td>
               <td>{{ usuario.nombreCompleto }}</td>
               <td>{{ pago.fechaPago | date }}</td>
-              <td contenteditable="true" (blur)="onMontoBlur($event, pago)">{{ pago.total }}</td>
-              <td contenteditable="true" (blur)="onPagadoBlur($event, pago)">{{ pago.isPagado }}</td>
+              <td>{{ pago.idPago }}</td>
+              <td contenteditable="true" (blur)="onMontoBlur($event, pago, usuario.usuarioId)">{{ pago.total }}</td>
+              <td contenteditable="true" (blur)="onPagadoBlur($event, pago, usuario.usuarioId)">{{ pago.isPagado }}</td>
+              <td>
+                <!-- Botón de guardar con un ícono -->
+                <button (click)="actualizarPago(usuario.usuarioId, pago)" class="btn btn-sm btn-primary">
+                  <i class="bi bi-save"></i> Guardar
+                </button>
+              </td>
             </tr>
           </ng-container>
       </tbody>

@@ -8,12 +8,27 @@ import { LoginRequest } from 'src/app/models/loginRequest';
 })
 
 export class PagosService {
-  urlBase = 'http://localhost:5000/api/pagos';
+  urlBase = 'http://localhost:5000/api';
   currentUser: LoginRequest;
   abonadosPagos: Observable<any>;
 
   constructor(private http: HttpClient) { 
     this.currentUser = JSON.parse(localStorage.getItem('auth-token') || '{}')
     this.abonadosPagos = new Observable<any>();
+  }
+
+  addPago(id: number, pago: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    return this.http.post(`${this.urlBase}/pagos/${id}`, pago, { headers });
+  }
+
+  updatePago(id: number, pago: any): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    return this.http.put(`${this.urlBase}/pagos/${id}`, pago, { headers });
+  }
+
+  notificarAbonadosConPagosPendientes(): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    return this.http.get(`${this.urlBase}/pagos/notificar-abonados-con-pagos-pendientes`, { headers });
   }
 }

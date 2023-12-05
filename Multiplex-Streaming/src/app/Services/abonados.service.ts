@@ -35,4 +35,9 @@ export class AbonadosService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
     return this.http.get(`${this.urlBase}/Abonados-y-pagos`, { headers });
   }
+
+  getAbonadosHabilitados(): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+    return this.http.get(`${this.urlBase}/habitados`, { headers });
+  }
 }
