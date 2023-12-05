@@ -1,0 +1,16 @@
+.custom-margin {
+    margin-left: 10px;
+}
+
+button { 
+    background-color: blueviolet;
+    border-color: black;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+.modal-body {
+   margin: 10px;
+}

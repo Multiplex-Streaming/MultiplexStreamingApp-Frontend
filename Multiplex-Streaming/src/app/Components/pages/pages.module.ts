@@ -23,6 +23,7 @@ import { RecomendadosComponent } from './recomendados/recomendados.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MetricasComponent } from './metricas/metricas.component';
 import { FavoritoComponent } from './favoritos/favorito.component';
+import { PagosComponent } from './pagos/pagos.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FavoritoComponent } from './favoritos/favorito.component';
     VerCapituloComponent,
     RecomendadosComponent,
     MetricasComponent,
-    FavoritoComponent
+    FavoritoComponent,
+    PagosComponent
   ],
   imports: [
     CommonModule,

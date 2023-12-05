@@ -4,8 +4,9 @@
 <div class="col-2">
   <select id="estado" [(ngModel)]="opcionSeleccionada" class="form-select" (change)="onEstadoAbonado()" name="estado">
     <option value="PENDIENTE" selected>PENDIENTES</option>
-    <option value="DE BAJA">DE BAJA</option>
+    <option value="BAJA"> DE BAJA</option>
     <option value="HABILITADO">HABILITADOS</option>
+    <option value="SUSPENDIDO">SUSPENDIDOS</option>
   </select>
 </div>
 </div>
@@ -28,10 +29,12 @@
       <td>{{ abonado.estado }}</td>
       <td>{{ abonado.fecAlta }}</td>
       <td>
-        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'DE BAJA' || abonado.estado === 'PENDIENTE'"
-        (click)="actualizarEstadoAbonado(abonado.id, 'HABILITADO')"><i class="fa fa-check"></i></button>
-        <button class="btn btn-sm btn-danger" *ngIf="abonado.estado === 'HABILITADO' || abonado.estado === 'PENDIENTE'" 
-        (click)="actualizarEstadoAbonado(abonado.id, 'DE BAJA')"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Baja' || abonado.estado === 'Pendiente'"
+        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-check"></i></button>
+        <button class="btn btn-sm btn-danger" *ngIf="abonado.estado === 'Habilitado' || abonado.estado === 'Pendiente'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'Baja')"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Suspendido' || abonado.estado === 'Pendiente'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   </tbody>

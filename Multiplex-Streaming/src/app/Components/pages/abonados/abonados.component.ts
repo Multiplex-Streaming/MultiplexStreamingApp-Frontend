@@ -57,4 +57,15 @@ export class AbonadosComponent implements OnInit {
       }
     });
   }
+
+  onAbonadosPagos(){
+    this.abonadosService.getAllUsuariosConPagos().subscribe({
+      next: data => {
+        this.abonados = data;
+        console.log(this.abonados);
+      },
+      error: error => {
+      }
+    });
+  }
 }
