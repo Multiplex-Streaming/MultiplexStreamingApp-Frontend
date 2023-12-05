@@ -4,11 +4,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th>id</th>
           <th>Correo</th>
           <th>Nombre Completo</th>
           <th>Fecha de Pago</th>
-          <th>id de pago</th>
           <th>Monto</th>
           <th>Pagado</th>
         </tr>
@@ -16,11 +14,9 @@
       <tbody>
         <ng-container *ngFor="let usuario of Pagos">
             <tr *ngFor="let pago of usuario.pagos">
-              <td>{{ usuario.usuarioId }}</td>
               <td>{{ usuario.correo }}</td>
               <td>{{ usuario.nombreCompleto }}</td>
               <td>{{ pago.fechaPago | date }}</td>
-              <td>{{ pago.idPago }}</td>
               <td contenteditable="true" (blur)="onMontoBlur($event, pago, usuario.usuarioId)">{{ pago.total }}</td>
               <td contenteditable="true" (blur)="onPagadoBlur($event, pago, usuario.usuarioId)">{{ pago.isPagado }}</td>
               <td>
@@ -36,6 +32,53 @@
     <button class="btn btn-primary mt-3" (click)="notificarAbonados()">
         Notificar Abonados
     </button>
+    <button class="btn btn-primary mt-3 custom-margin" (click)="openModal()">
+        Agregar Pago
+    </button>
   </div>
-  
-  
+
+<!--form modal-->
+<div
+class="modal fade"
+id="myModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Agregar Pago:</h3>
+                <button type="button" class="btn btn-primary" (click)="closeModal()">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="abonadoSelector">Seleccionar Abonado:</label>
+                    <select id="abonadoSelector" class="form-control" [(ngModel)]="selectedAbonadoId">
+                        <option *ngFor="let usuario of Pagos" [value]="usuario.usuarioId">{{ usuario.nombreCompleto }}</option>
+                    </select>
+                </div>
+                
+                <div class="form-group margin-top">
+                    <label for="montoInput">Monto:</label>
+                    <input type="text" id="montoInput" class="form-control" [(ngModel)]="nuevoPago.total">
+                </div>
+                
+                <div class="form-group margin-top">
+                    <label for="fechaInput">Fecha:</label>
+                    <input type="date" id="fechaInput" class="form-control" [(ngModel)]="nuevoPago.fechaPago">
+                </div>
+                
+                <div class="form-group margin-top">
+                    <label for="pagadoCheckbox">Pagado:</label>
+                    <input type="checkbox" id="pagadoCheckbox" class="form-check-input" [(ngModel)]="nuevoPago.isPagado">
+                </div>                
+            </div>
+            <button (click)="agregarPago()" class="btn btn-sm btn-primary m-3">
+                <i class="bi bi-save"></i> Guardar Pago
+            </button>
+        </div>
+    </div>
+</div>

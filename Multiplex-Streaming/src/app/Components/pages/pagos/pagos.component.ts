@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { AbonadosService } from 'src/app/Services/abonados.service';
 import { PagosService } from 'src/app/Services/pagos.service';
 
+declare var window: any;
+
 @Component({
   selector: 'app-pagos',
   templateUrl: './pagos.component.html',
@@ -12,6 +14,14 @@ export class PagosComponent {
   Pagos: any[] = [];
   esAdmin: boolean = false;
   abonadosHabilitados: any[] = [];
+  modalRef: any;
+  selectedAbonadoId: number = 0;
+  nuevoPago: any = {
+      idPago: 0,
+      fechaPago: '',
+      isPagado: false,
+      total: 0
+  };
 
   constructor(private abonadosService: AbonadosService, private pagosService: PagosService, private authService: AuthService) {
 
@@ -20,6 +30,10 @@ export class PagosComponent {
   ngOnInit(): void {
     this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
     this.onAbonadosPagos();
+    this.modalRef = new window.bootstrap.Modal(
+      document.getElementById('myModal')
+    );
+    this.selectedAbonadoId = 0;
   }
 
   onAbonadosPagos(){
@@ -44,27 +58,32 @@ export class PagosComponent {
     //this.actualizarPago(idUsuario, pago);
   }
 
-  agregarPago(idUsuario: number, nuevoPago: any) {
+  agregarPago() {
+    const idUsuario = this.selectedAbonadoId;
+
+    if (!idUsuario) {
+      // Mostrar mensaje de error o manejar caso en el que no se ha seleccionado un abonado
+      return;
+    }
+
     const nuevoPagoObj = {
-      idPago: nuevoPago.idPago,
-      fechaPago: nuevoPago.fechaPago,
-      isPagado: nuevoPago.isPagado,
-      total: nuevoPago.total
+      idPago: this.nuevoPago.idPago,
+      fechaPago: this.nuevoPago.fechaPago,
+      isPagado: this.nuevoPago.isPagado,
+      total: this.nuevoPago.total
     };
-  
+
     this.pagosService.addPago(idUsuario, nuevoPagoObj).subscribe(
       (response) => {
-        // Lógica después de agregar el pago
         console.log('Pago agregado correctamente:', response);
-        // Actualizar la lista de pagos
         this.onAbonadosPagos();
+        this.closeModal();
       },
       (error) => {
-        // Manejo de errores
         console.error('Error al agregar el pago:', error);
       }
     );
-  }  
+  }
   
   actualizarPago(idUsuario: number, pago: any) {
     const pagoActualizado = {
@@ -113,5 +132,20 @@ export class PagosComponent {
         console.error('Error al obtener abonados habilitados:', error);
       }
     );
+  }
+
+  openModal() {
+    this.modalRef.show();
+  }
+
+  closeModal() {
+    this.modalRef.hide();
+    this.selectedAbonadoId = 0;
+    this.nuevoPago = {
+      idPago: 0,
+      fechaPago: '',
+      isPagado: false,
+      total: 0
+    };
   }
 }
