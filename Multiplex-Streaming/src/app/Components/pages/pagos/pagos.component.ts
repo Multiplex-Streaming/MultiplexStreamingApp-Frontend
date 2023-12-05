@@ -31,7 +31,7 @@ export class PagosComponent {
     this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
     this.onAbonadosPagos();
     this.modalRef = new window.bootstrap.Modal(
-      document.getElementById('myModal')
+      document.getElementById('myModal2')
     );
     this.selectedAbonadoId = 0;
   }
