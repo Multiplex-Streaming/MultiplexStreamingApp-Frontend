@@ -1,0 +1,16 @@
+<div class="container">
+    <img class="background-image" [src]="getPortada()" alt="Imagen de fondo">
+    <div class="gradient-overlay"></div>
+    <div class="content">
+        <h1>{{ serie.nombre }}</h1>
+        <p>{{ serie.descripcion }}</p>
+    </div>
+</div>
+<div class="episode" (click)="verCapitulo(capitulo.idCp)" *ngFor="let capitulo of capitulos">
+    <img [src]="getPortadaCapitulo(capitulo.idCp)" [alt]="capitulo.nombreCp">
+    <div class="episode-content">
+        <h1>{{ capitulo.nombreCp }}</h1>
+        <p>{{ capitulo.descripcionCp }}</p>
+    </div>
+    <i class="fas fa-play play-icon"></i>
+</div>

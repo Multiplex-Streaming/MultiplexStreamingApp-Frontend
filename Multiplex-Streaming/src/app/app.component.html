@@ -1,1 +1,13 @@
-<h1> Multiplex Streaming </h1>
+<!-- app.component.html -->
+<div class="particles-container" *ngIf="!esAdmin">
+    <ngx-particle [total]="total" [default_height]="default_height" [default_width]="default_width" [args]="args"></ngx-particle>
+</div>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+      <div class="cont col-md-12">
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

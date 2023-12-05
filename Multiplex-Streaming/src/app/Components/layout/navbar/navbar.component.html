@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <nav class="navbar justify-content-end">
+        <div class="container">
+          <h1 class="navbar-brand">Multiplex Streaming</h1>
+        </div>
+      </nav>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon navbar-light"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <app-autocomplete *ngIf="estaAutenticado && !admin()"></app-autocomplete>
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/home')">Pagina Principal</a>
+            </li>
+            <li class="item" *ngIf="estaAutenticado && admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/abonados')">Abonados</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado && admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/metricas')">Metricas y mediciones</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/peliculas')">Peliculas</a>
+            </li>
+            
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/series')">Series</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado && !admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/favoritos')">Favoritos</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado && !admin()">
+                <a class="nav-link active itemNav" aria-current="page" (click)="navigateTo('/historial')">Historial</a>
+            </li>
+
+            <li class="item" *ngIf="estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" (click)="logout()">Cerrar Sesión</a>
+            </li>
+            <!-- <li class="item" *ngIf="!estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/register">Registrarse</a>
+            </li>
+
+            <li class="item" *ngIf="!estaAutenticado">
+                <a class="nav-link active itemNav" aria-current="page" routerLink="/forgot-password">Recuperar Contraseña</a>
+            </li> -->
+        </ul>
+        </div>
+    </div>
+</nav>

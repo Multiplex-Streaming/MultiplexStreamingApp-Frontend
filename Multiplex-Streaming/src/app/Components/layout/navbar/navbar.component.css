@@ -1,0 +1,45 @@
+.itemNav {
+    padding-left:3px;
+    margin-left:5px;
+    transition-duration: 0.4s;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.itemNav:hover {
+    border:1px solid #e8e8e9;
+    border-radius: 15px;
+    background-color: rgb(126, 31, 113);
+    transition: background-color .5s;
+}
+
+
+          
+.custom-toggler.navbar-toggler {
+    border-color: #7A1DC9;
+    color:#7A1DC9;
+
+}
+
+  
+.custom-toggler .navbar-toggler-icon {
+    background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(122, 29, 201, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-brand{
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    box-sizing: border-box;
+}

@@ -1,0 +1,60 @@
+<div class="row justify-content-center py-5">
+    <div class="text-center" style="margin-bottom: 20px;">
+      <img src="assets/img/logo2.jpg" alt="logo" width="200px">
+    </div>
+  
+    <div class="col-md-6">
+      <div class="cardi card">
+        <div class="card-header text-center"><strong>REGISTRARSE</strong></div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit($event,newUser)" novalidate>
+  
+            <div class="form-group py-2">
+              <div class="input-group">
+                <div class="form-group col-md-10">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="name" id="inputNombre" [(ngModel)]="newUser.Name">
+                  </mat-form-field>
+                </div>
+  
+                
+                <div class="form-group col-md-10">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput type="text" class="form-control" formControlName="surname" id="inputApellido" [(ngModel)]="newUser.Surname">
+                  </mat-form-field>
+                </div>
+  
+                
+                <div class="form-group col-md-10">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Dirección de Email</mat-label>
+                    <input matInput type="email" class="form-control" formControlName="mail" id="inputEmail" [(ngModel)]="newUser.Email">
+                  </mat-form-field>
+                </div>
+  
+                
+                <div class="form-group col-md-10">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" class="form-control" formControlName="password" id="inputPassword" [(ngModel)]="newUser.Password">
+                  </mat-form-field>
+                </div>
+  
+                <div class="form-group col-md-10">
+                  <button mat-raised-button type="submit" class="button-1">REGISTRARSE</button>
+                </div>
+  
+                <div class="col text-center">
+                  <small>¿Ya tienes una cuenta? </small>
+                  <a class="link" aria-current="page" routerLink="/login">Iniciar sesión</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

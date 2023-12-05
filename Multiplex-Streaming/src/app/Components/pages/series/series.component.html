@@ -1,0 +1,264 @@
+<div class="row" *ngIf="!esAdmin">
+    <div class="col-md-4" *ngFor="let serie of series">
+        <div class="serie-card" (click)="verSerie(serie.id)">
+            <img [title]="serie.nombre" height="100%" width="100%" 
+            [src]="getPortada(serie)" [alt]="serie.nombre">
+            <div class="serie-details">
+                <h3 class="text-center">{{ serie.nombre }}</h3>
+                <p class="description">{{ serie.descripcion }}</p>
+                <p class="description">Nº de Temporadas: {{ serie.cantidadCapitulos }}.</p>   
+                
+            <app-fav [serieId]="serie.id"
+            [esBoton]="true"></app-fav>             
+            </div>
+          </div>
+    </div>
+</div>
+
+<div *ngIf="esAdmin">
+  <div class="container">
+    <div class="row mt-4 mb-2">
+      <div class="col-12">
+        <button type="button" (click)="openSerieModal()" class="btn btn-primary float-end">
+          <i class="fa fa-plus"></i>Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Tabla de series -->
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item" *ngFor="let serie of series">
+    <div class="accordion-header" id="headingOne">
+      <table class="collapsed table table-bordered table-striped" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Título</th>
+    <th>Descripción</th>
+    <th>Temporadas</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>+</td>
+    <td>{{ serie.nombre }}</td>
+    <td>{{ serie.descripcion }}</td>
+    <td>{{ serie.cantidadCapitulos }}</td>
+    <td>
+      <button class="btn btn-sm btn-primary" (click)="editarSerie(serie)"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-sm btn-danger" (click)="eliminarSerie(serie)"><i class="fa fa-trash"></i></button>
+    </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="container">
+          <div class="row mt-4 mb-2">
+              <div class="col-4">
+                <h2>Capítulos</h2>
+              </div>
+              <div class="col-8">
+                <button type="button" (click)="openNuevoCapituloModal(serie.id)" class="btn btn-primary float-end">
+                    <i class="fa fa-plus"></i>Agregar
+                </button>
+              </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Duración</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let capitulo of serie.capitulos">
+            <tr>
+              <td>{{ capitulo.nombreCp }}</td>
+              <td>{{ capitulo.descripcionCp }}</td>
+              <td>{{ capitulo.duracionCp }}</td>
+              <td>
+                <button class="btn btn-sm btn-primary" (click)="editarCapitulo(capitulo)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger" (click)="eliminarCapitulo(capitulo)"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  </div>
+</div><!-- 
+
+
+<div *ngIf="esAdmin">
+  <div class="container">
+    <div class="row mt-4 mb-2">
+        <div class="col-12">
+          <button type="button" (click)="openSerieModal()" class="btn btn-primary float-end">
+              <i class="fa fa-plus"></i>Agregar
+          </button>
+        </div>
+      </div>
+</div>
+<div class="accordion" id="accordionExample">
+<div class="accordion-item" *ngFor="let serie of series">
+  <div class="accordion-header" id="headingOne">
+    <table class="collapsed table table-bordered table-striped" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+<thead>
+<tr>
+  <th>#</th>
+  <th>Título</th>
+  <th>Descripción</th>
+  <th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>+</td>
+  <td>{{ serie.nombre }}</td>
+  <td>{{ serie.descripcion }}</td>
+  <td>
+    <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
+    <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+      <div class="container">
+        <div class="row mt-4 mb-2">
+            <div class="col-4">
+              <h2>Capítulos</h2>
+            </div>
+            <div class="col-8">
+              <button type="button" (click)="openCapituloModal()" class="btn btn-primary float-end">
+                  <i class="fa fa-plus"></i>Agregar
+              </button>
+            </div>
+          </div>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Duración</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let capitulo of serie.capitulos">
+          <tr>
+            <td>{{ capitulo.nombreCp }}</td>
+            <td>{{ capitulo.descripcionCp }}</td>
+            <td>{{ capitulo.duracionCp }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+</div> -->
+<!--serie modal-->
+<div
+class="modal fade"
+id="serieModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h3 class="modal-title">{{ editing ? 'Editar' : 'Agregar' }} Serie</h3>
+  <button type="button" class="btn btn-primary" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!-- Formulario para agregar/editar serie -->
+  <form class="row">
+      <input type="hidden" [(ngModel)]="serie.id" name="id" [value]="serie.id" />
+    <div class="form-group">
+      <label>Título</label>
+      <input type="text" class="form-control" [(ngModel)]="serie.nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label>Descripción</label>
+      <textarea class="form-control" [(ngModel)]="serie.descripcion" name="descripcion" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Cantidad Temporadas</label>
+      <input type="number" class="form-control" [(ngModel)]="serie.cantidadCapitulos" name="cantidadCapitulos" required>
+    </div>
+    <div class="form-group">
+      <label>Portada</label>
+      <input type="file" class="form-control" [(ngModel)]="serie.url" (change)="onPortadaSerieSelected($event)" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" (click)="guardarSerie()">Guardar</button>
+  </form>
+</div>
+</div>
+</div>
+</div>
+<!--capitulo modal-->
+<div
+class="modal fade"
+id="capituloModal"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h3 class="modal-title">{{ editing ? 'Editar' : 'Agregar' }} Capítulo</h3>
+  <button type="button" class="btn btn-primary" (click)="closeCapituloModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!-- Formulario para agregar/editar serie -->
+  <form class="row">
+      <input type="hidden" [(ngModel)]="capitulo.idCp" name="idCp" [value]="capitulo.idCp" />
+      <input type="hidden" [(ngModel)]="capitulo.idSr" name="idSr" [value]="serie.id" />
+    <div class="form-group">
+      <label>Título</label>
+      <input type="text" class="form-control" [(ngModel)]="capitulo.nombreCp" name="nombreCp" required>
+    </div>
+    <div class="form-group">
+      <label>Temporada</label>
+      <input type="text" class="form-control" [(ngModel)]="capitulo.temporada" name="temporada" required>
+    </div>
+    <div class="form-group">
+      <label>Descripción</label>
+      <textarea class="form-control" [(ngModel)]="capitulo.descripcionCp" name="descripcionCp" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Duración</label>
+      <input type="number" class="form-control" [(ngModel)]="capitulo.duracionCp" name="duracionCp" required>
+    </div>
+    <div class="form-group">
+      <label>Portada</label>
+      <input type="file" class="form-control" [(ngModel)]="serie.portadaFile" (change)="onPortadaCapituloSelected($event)" required>
+    </div>
+    <div class="form-group">
+      <label>Archivo</label>
+      <input type="file" class="form-control" [(ngModel)]="serie.url" (change)="onFileSelected($event)" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4" (click)="guardarCapitulo()">Guardar</button>
+  </form>
+</div>
+</div>
+</div>
+</div>

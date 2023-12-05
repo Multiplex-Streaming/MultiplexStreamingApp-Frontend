@@ -1,0 +1,42 @@
+<div *ngIf="esAdmin">
+<div class="container">
+<div class="row mt-4 mb-2">
+<div class="col-2">
+  <select id="estado" [(ngModel)]="opcionSeleccionada" class="form-select" (change)="onEstadoAbonado()" name="estado">
+    <option value="PENDIENTE" selected>PENDIENTES</option>
+    <option value="BAJA"> DE BAJA</option>
+    <option value="HABILITADO">HABILITADOS</option>
+    <option value="SUSPENDIDO">SUSPENDIDOS</option>
+  </select>
+</div>
+</div>
+</div>
+<!-- Tabla de abonados -->
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Estado</th>
+      <th>Fecha registro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let abonado of abonados">
+      <td>{{ abonado.name }}</td>
+      <td>{{ abonado.email }}</td>
+      <td>{{ abonado.estado }}</td>
+      <td>{{ abonado.fecAlta }}</td>
+      <td>
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Baja' || abonado.estado === 'Pendiente'"
+        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-check"></i></button>
+        <button class="btn btn-sm btn-danger" *ngIf="abonado.estado === 'Habilitado' || abonado.estado === 'Pendiente'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'Baja')"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Suspendido' || abonado.estado === 'Pendiente'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,19 @@
+<div class="autocomplete">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+    />
+    <ul class="list-group" *ngIf="showResults">
+      <li
+        class="list-group-item"
+        *ngFor="let result of searchResults"
+        (click)="onResultSelected(result)"
+      >
+        {{ result.Titulo }}
+      </li>
+    </ul>
+</div>
+  

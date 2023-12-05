@@ -1,0 +1,5 @@
+<button *ngIf="esBoton" type="button" class="btn btn-outline-primary favorite-btn" [ngClass]="{'favorite-icon': active, 'active': active}" 
+(click)="onFavClick()">
+    <i class="fa fa-heart"></i> Favorito
+</button>
+<i *ngIf="!esBoton" class="fas fa-heart fa-2x favorite-icon" [ngClass]="{'favorite-icon': active, 'active': active}" (click)="onFavClick()"></i>
