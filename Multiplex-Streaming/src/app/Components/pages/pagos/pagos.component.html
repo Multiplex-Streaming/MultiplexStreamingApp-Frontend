@@ -20,7 +20,6 @@
               <td contenteditable="true" (blur)="onMontoBlur($event, pago, usuario.usuarioId)">{{ pago.total }}</td>
               <td contenteditable="true" (blur)="onPagadoBlur($event, pago, usuario.usuarioId)">{{ pago.isPagado }}</td>
               <td>
-                <!-- Botón de guardar con un ícono -->
                 <button (click)="actualizarPago(usuario.usuarioId, pago)" class="btn btn-sm btn-primary">
                   <i class="bi bi-save"></i> Guardar
                 </button>

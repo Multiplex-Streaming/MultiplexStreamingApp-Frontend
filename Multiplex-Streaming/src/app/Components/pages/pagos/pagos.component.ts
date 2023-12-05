@@ -62,7 +62,6 @@ export class PagosComponent {
     const idUsuario = this.selectedAbonadoId;
 
     if (!idUsuario) {
-      // Mostrar mensaje de error o manejar caso en el que no se ha seleccionado un abonado
       return;
     }
 
@@ -100,7 +99,6 @@ export class PagosComponent {
         this.onAbonadosPagos();
       },
       (error) => {
-        // Manejo de errores
         console.error('Error al actualizar el pago:', error);
         alert("Error al actualizar el pago");
       }
@@ -110,11 +108,9 @@ export class PagosComponent {
   notificarAbonados() {
     this.pagosService.notificarAbonadosConPagosPendientes().subscribe(
       (response) => {
-        //agregar mensaje alert
         alert("Se notificaron los abonados con pagos pendientes");
       },
       (error) => {
-        // Manejo de errores
         alert("Error al notificar los abonados con pagos pendientes");
       }
     );
@@ -123,12 +119,10 @@ export class PagosComponent {
   obtenerAbonadosHabilitados() {
     this.abonadosService.getAbonadosHabilitados().subscribe(
       (response) => {
-        // Lógica después de obtener abonados habilitados
         this.abonadosHabilitados = response;
         console.log('Abonados habilitados:', response);
       },
       (error) => {
-        // Manejo de errores
         console.error('Error al obtener abonados habilitados:', error);
       }
     );
