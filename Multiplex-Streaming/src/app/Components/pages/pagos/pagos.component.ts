@@ -67,26 +67,23 @@ export class PagosComponent {
   }  
   
   actualizarPago(idUsuario: number, pago: any) {
-    console.log("pago actual:", pago);
     const pagoActualizado = {
       idPago: pago.idPago,
       fechaPago: pago.fechaPago,
       isPagado: pago.isPagado,
       total: pago.total,
     };
-
-    console.log('Pago actualizado:', pagoActualizado);
   
     this.pagosService.updatePago(idUsuario, pagoActualizado).subscribe(
       (response) => {
-        // Lógica después de actualizar el pago
         console.log('Pago actualizado correctamente:', response);
-        // Actualizar la lista de pagos
+        alert("Pago actualizado correctamente");
         this.onAbonadosPagos();
       },
       (error) => {
         // Manejo de errores
         console.error('Error al actualizar el pago:', error);
+        alert("Error al actualizar el pago");
       }
     );
   }
