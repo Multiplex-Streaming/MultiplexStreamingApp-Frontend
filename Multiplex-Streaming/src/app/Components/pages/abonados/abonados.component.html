@@ -29,12 +29,12 @@
       <td>{{ abonado.estado }}</td>
       <td>{{ abonado.fecAlta }}</td>
       <td>
-        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Baja' || abonado.estado === 'Pendiente'"
+        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Baja' || abonado.estado === 'Pendiente' || abonado.estado === 'Suspendido'"
         (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-check"></i></button>
         <button class="btn btn-sm btn-danger" *ngIf="abonado.estado === 'Habilitado' || abonado.estado === 'Pendiente'" 
         (click)="actualizarEstadoAbonado(abonado.id, 'Baja')"><i class="fa fa-trash"></i></button>
-        <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Suspendido' || abonado.estado === 'Pendiente'" 
-        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-trash"></i></button>
+        <!-- <button class="btn btn-sm btn-primary" *ngIf="abonado.estado === 'Suspendido' || abonado.estado === 'Pendiente'" 
+        (click)="actualizarEstadoAbonado(abonado.id, 'Habilitado')"><i class="fa fa-trash"></i></button> -->
       </td>
     </tr>
   </tbody>
