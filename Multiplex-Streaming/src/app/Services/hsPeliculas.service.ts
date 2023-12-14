@@ -43,8 +43,12 @@ export class hsPlService {
 
     put(peliculaId:Number, minutos: Number, segundos: Number){
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.Token}`);
+        
+        if (!Number.isNaN(minutos) && !Number.isNaN(segundos)) {
+            return this.http.put(`${this.urlBase}?peliculaId=${peliculaId}&minutos=${minutos}&segundos=${segundos}`, { headers });
+        }
 
-        return this.http.put(`${this.urlBase}?peliculaId=${peliculaId}&minutos=${minutos}&segundos=${segundos}`, { headers });
+        return null
     }
 
     getUltimoHistorialPelicula(peliculaId:Number){

@@ -77,7 +77,7 @@ export class VideoplayerComponent {
   }
 
   updateHistorialPelicula () {
-    this.historialPelicula.put(this.peliculaId, this.minutes, this.seconds).subscribe({
+    this.historialPelicula.put(this.peliculaId, this.minutes, this.seconds)?.subscribe({
       next: data => {
       },
       error: error => { console.error('Ocurrió un error:', error);
