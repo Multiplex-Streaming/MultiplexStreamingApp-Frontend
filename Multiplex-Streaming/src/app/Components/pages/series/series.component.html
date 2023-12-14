@@ -205,6 +205,13 @@ aria-hidden="true"
       <label>Portada</label>
       <input type="file" class="form-control" [(ngModel)]="serie.url" (change)="onPortadaSerieSelected($event)" required>
     </div>
+    <div class="form-group">
+      <label>Género</label>
+      <select id="genero" class="form-select" [(ngModel)]="selectedGenero" name="genero" required>
+        <option *ngFor="let genero of generos" [ngValue]="genero">
+          {{ genero.descripcion }}</option>
+      </select>
+    </div>
     <button type="submit" class="btn btn-primary mt-4" (click)="guardarSerie()">Guardar</button>
   </form>
 </div>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CapituloModel } from 'src/app/models/capituloModel';
 import { SerieModel } from 'src/app/models/serieModel';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
+import { PeliculaService } from 'src/app/Services/peliculas.service';
 import { SerieService } from 'src/app/Services/series.service';
+import { GeneroModel } from 'src/app/models/generoModel';
 import { Router } from '@angular/router';
 
 declare var window: any;
@@ -41,10 +43,11 @@ export class SeriesComponent implements OnInit
         temporada: 0
     }
     editing: boolean = false;
-    //generoSelected?: GeneroModel = new GeneroModel();
+    generos: GeneroModel[] = [];
     esAdmin: boolean = false;
+    selectedGenero?: GeneroModel = new GeneroModel();
 
-    constructor (private serieService: SerieService, private authService: AuthService,
+    constructor (private serieService: SerieService, private peliculaService: PeliculaService, private authService: AuthService,
       private router: Router) {
 
     }
@@ -52,6 +55,7 @@ export class SeriesComponent implements OnInit
     ngOnInit(): void 
     {
         this.getSeries();
+        this.getGeneros();
         this.serieModal = new window.bootstrap.Modal(
           document.getElementById('serieModal')
         );
@@ -60,6 +64,16 @@ export class SeriesComponent implements OnInit
         );
         this.authService.esAdmin.subscribe(res=>( this.esAdmin=res));
         // this.esAdmin = this.authService.esAdmin;
+    }
+
+    getGeneros() {
+      this.peliculaService.getGeneros().subscribe({
+        next: data => {
+          this.generos = data;
+        },
+        error: error => {
+        }
+      });
     }
 
     //GET all series
@@ -86,9 +100,11 @@ export class SeriesComponent implements OnInit
           });
     }
 
-    guardarSerie()
-    {     
+    guardarSerie(){
+      if (this.serie.nombre && this.serie.descripcion && this.selectedGenero) {
+        this.serie.generos = [this.selectedGenero];
         if (this.editing) {
+          console.log(this.serie);
             this.serieService.put(this.serie).subscribe({
               next: data => {
                 if (data) {
@@ -109,6 +125,7 @@ export class SeriesComponent implements OnInit
               }
             })
           }
+        }
     }
 
     guardarCapitulo() {
@@ -137,6 +154,7 @@ export class SeriesComponent implements OnInit
 
     editarSerie(serie: SerieModel) {
       this.serie = { ...serie };
+      this.selectedGenero = serie.generos?.[0];
       this.editing = true;
       this.openSerieModal();
     }

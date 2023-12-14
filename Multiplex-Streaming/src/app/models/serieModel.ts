@@ -1,4 +1,5 @@
 import { CapituloModel } from "./capituloModel";
+import { GeneroModel } from "./generoModel";
 
 export class SerieModel 
 {
@@ -10,4 +11,5 @@ export class SerieModel
     portada: string = "";
     capitulos?:[CapituloModel];
     portadaFile: File | null = null;
+    generos?:[GeneroModel];
 }

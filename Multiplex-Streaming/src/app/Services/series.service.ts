@@ -29,6 +29,9 @@ export class SerieService
         formData.append('Nombre', serie.nombre.toString());
         formData.append('Descripcion', serie.descripcion.toString());
         formData.append('CantidadCapitulos', serie.cantidadCapitulos.toString());
+        serie.generos?.forEach((item)=> {
+            formData.append('GenerosSerie', item.id.toString());
+          })
         if (portadaFile != null)
           formData.append('PortadaFile', portadaFile, portadaFile.name);
     
